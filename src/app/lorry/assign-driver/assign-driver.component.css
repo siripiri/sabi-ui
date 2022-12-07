@@ -1,0 +1,35 @@
+.text-bg-warning {
+  background-color: #ffc107;
+  color: white;
+  font-weight: 600;
+  font-size: small;
+}
+
+.text-bg-success {
+  background-color: #198754;
+  color: white;
+  font-weight: 600;
+  font-size: small;
+}
+
+.table-card {
+  margin: 20px;
+}
+
+.table-card h2 {
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.table-card .subHeader {
+  padding-left: 2%;
+}
+
+.table-card p {
+  color: #808b96;
+}
+
+mat-form-field {
+  width: 100%;
+  margin: 3px;
+}

@@ -1,0 +1,13 @@
+<mat-form-field>
+    <mat-label>Assign Driver</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="dataSource"  [formControl]="selected" [errorStateMatcher]="matcher">
+        <ng-container *ngFor="let driverName of datasource">
+            <mat-option [value]="driverName" [disabled]="driverName.lorryId != null" (click)="clickedValue(driverName)">
+                {{driverName.driverName}}  
+                <span *ngIf="driverName.lorryId!=null" class="badge rounded-pill text-bg-warning">Assigned</span>
+            </mat-option>
+        </ng-container>
+    </mat-select>
+    <mat-hint>Select a driver to assign with a lorry</mat-hint>
+    <mat-error *ngIf="selected.hasError('required')">You must make a selection</mat-error>
+</mat-form-field>

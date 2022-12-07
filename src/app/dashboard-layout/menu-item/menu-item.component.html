@@ -1,0 +1,15 @@
+<mat-list>
+    <ng-container *ngFor="let item of menu">
+          <mat-list-item
+            *ngIf="item.title"
+            [routerLink]="item.link"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <mat-icon [style.color]="item.color" mat-list-icon>
+              {{ item.icon }}
+            </mat-icon>
+            <div mat-line>{{ item.title }}</div>
+          </mat-list-item>
+    </ng-container>
+</mat-list>
