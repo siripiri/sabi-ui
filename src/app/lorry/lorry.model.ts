@@ -8,27 +8,24 @@ export interface LorryTable {
 }
 
 export interface Lorry {
-    id:number;
+    id:number | null;
     numberPlate:string;
     type:string;
     modelNumber:string;
     manufacturer:string;
-    driverName:string;
-    api_url:string;
+    driverId: number | null;
+    driverName:string | null;
+    api_url:string | null;
 }
 
-export interface DriverName {
-    driverId:number;
+export interface Driver {
+    id:number | null;
+    driverName:string;
     lorryId:number;
-    driverName:string;
-    api_url:string;
+    api_url:string | null;
 }
 
-export interface AddLorryWithDriver {
-    numberPlate:string;
-    type:string;
-    modelNumber:string;
-    manufacture:string;
-    driverId:number | null;
+export interface DialogLorry {
+    update: boolean,
+    lorry: Lorry
 }
-

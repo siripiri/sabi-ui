@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Location, LocationApi } from '../location/location.model';
-import { DriverName, Lorry, LorryTable } from '../lorry/lorry.model';
+import { Driver, Lorry } from '../lorry/lorry.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,7 @@ export class ApiServiceService {
 
   private GetDriversNameWithLorryIdUrl = "http://localhost:8080/api/v1/driver/names";
 
-  private PutLorryWithDriverUrl = "http://localhost:8080/api/v1/lorry/lorryDriver";
-  private PutLorryWithoutDriverUrl = "http://localhost:8080/api/v1/lorry";
+  private PutLorry = "http://localhost:8080/api/v1/lorry";
 
   getLocationData(): Observable<Location[]> {
     return this.__http.get<Location[]>(this.GetLocationsUrl);
@@ -40,15 +39,11 @@ export class ApiServiceService {
     return this.__http.get<Lorry[]>(this.GetLorryWithDriverNameUrl);
   }
 
-  getDriverNamesData(): Observable<DriverName[]> {
-    return this.__http.get<DriverName[]>(this.GetDriversNameWithLorryIdUrl);
+  getDriverNamesData(): Observable<Driver[]> {
+    return this.__http.get<Driver[]>(this.GetDriversNameWithLorryIdUrl);
   }
 
-  putLorryWithDriver(lorry: any): Observable<any> {
-    return this.__http.put<any>(this.PutLorryWithDriverUrl, lorry);
-  }
-
-  putLorryWithoutDriver(lorry:any): Observable<any> {
-    return this.__http.put<any>(this.PutLorryWithoutDriverUrl, lorry);
+  putLorry(lorry:any): Observable<any> {
+    return this.__http.put<any>(this.PutLorry, lorry);
   }
 }

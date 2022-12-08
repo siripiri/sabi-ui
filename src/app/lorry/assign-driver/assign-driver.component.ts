@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { DriverName } from '../lorry.model';
+import { Driver, Lorry } from '../lorry.model';
 import { LorryService } from '../lorry.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -19,8 +19,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AssignDriverComponent implements OnInit {
 
-  selectedValue:DriverName | undefined;
-  datasource:DriverName[] | undefined;
+  selectedValue:Driver | undefined;
+  datasource:Driver[] | undefined;
   selected = new FormControl('valid', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
@@ -41,7 +41,7 @@ export class AssignDriverComponent implements OnInit {
     //this.assigndriver.emit(this.selectedValue?.driverName);
   } 
 
-  async clickedValue(driverName:DriverName): Promise<void> {
+  async clickedValue(driverName:Driver): Promise<void> {
     this.lorryService.onDriverSelect.next(driverName);
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { ApiServiceService } from '../api-services/api-service.service';
-import { DriverName, Lorry, LorryTable } from './lorry.model';
+import { Driver, Lorry, LorryTable } from './lorry.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,25 +31,26 @@ export class LorryService {
 
   lorryToLorryTable(lorry: Lorry): LorryTable {
     return {
-      id: lorry.id,
+      id: lorry.id as number,
       numberPlate: lorry.numberPlate,
       type: lorry.type,
       modelNumber: lorry.modelNumber,
       manufacturer: lorry.manufacturer,
-      driverName: lorry.driverName
+      driverName: lorry.driverName as string
     };
   }
 
-  getDriverNamesDropDown(): Observable<DriverName[]> {
+  getDriverNamesDropDown(): Observable<Driver[]> {
     return this.apiService.getDriverNamesData();
   }
 
   postLorrywithDriver(lorry: any, driverId: number){
     lorry.driverId = driverId;
     console.log(lorry);
+    return this.apiService.putLorry(lorry);
   }
 
-  postLorryWithoutDriver(lorry: any){
-    console.log(lorry);
+  postLorryWithoutDriver(lorry: Lorry): Observable<any> {
+    return this.apiService.putLorry(lorry);
   }
 }

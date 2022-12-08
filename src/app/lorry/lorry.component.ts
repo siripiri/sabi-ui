@@ -18,28 +18,28 @@ export class LorryComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'numberPlate', 'type', 'modelNumber', 'manufacturer', 'driverName', 'action'];
   dataSource!: MatTableDataSource<LorryTable>;
-  sizeOfLorry:number = 0;
+  sizeOfLorry: number = 0;
 
   @ViewChild(MatSort)
-  sort!:MatSort;
+  sort!: MatSort;
 
   @ViewChild(MatPaginator)
-  paginator!:MatPaginator;
+  paginator!: MatPaginator;
 
   constructor(
     private lorryService: LorryService,
-    private __dialog:MatDialog,
+    private __dialog: MatDialog,
     private __snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.lorryService.getLorryTable()
-        .subscribe(result => {
-          this.dataSource = new MatTableDataSource(result);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-          this.sizeOfLorry = result.length;
-        })
+      .subscribe(result => {
+        this.dataSource = new MatTableDataSource(result);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.sizeOfLorry = result.length;
+      })
   }
 
   applyFilter(event: Event) {
@@ -51,17 +51,34 @@ export class LorryComponent implements OnInit {
     }
   }
 
-  createLorry(){
+  createLorry() {
     let dialogRef = this.__dialog.open(
       DialogLorryComponent, {
-        height: '500px',
-        width: '390px'
+      height: '500px',
+      width: '390px',
+      data: { update: false }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.id && result?.driverName) {
+        this.openSnackBar(`Added new Lorry (${result?.numberPlate}) with driver ${result?.driverName}`, "Dismiss");
+        this.ngOnInit();
+      } else if (result?.id) {
+        this.openSnackBar(`Added new Lorry (${result?.numberPlate}) without driver`, "Dismiss");
+        this.ngOnInit();
+      } else if (result) {
+        this.openSnackBar(`Error creating lorry: ${result}`, "Dismiss");
       }
-    );
+    });
   }
 
   updateLorry(lorry: LorryTable) {
-
+    let dialogRef = this.__dialog.open(
+      DialogLorryComponent, {
+      height: '500px',
+      width: '390px',
+      data: { update: true, lorry: lorry }
+    });
   }
 
   deleteLorry() {
@@ -69,7 +86,7 @@ export class LorryComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string | undefined) {
-    this.__snackBar.open(message, action, { duration:5000 });
+    this.__snackBar.open(message, action, { duration: 5000 });
   }
 
 

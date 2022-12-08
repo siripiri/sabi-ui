@@ -12,8 +12,8 @@ import { LocationService } from '../location.service';
 export class DialogLocationComponent implements OnInit {
 
   constructor(
-    public dialogRef:MatDialogRef<DialogLocationComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data:DialogLocation,
+    public dialogRef: MatDialogRef<DialogLocationComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogLocation,
     private locationService: LocationService
   ) { }
 
@@ -42,28 +42,28 @@ export class DialogLocationComponent implements OnInit {
 
   updateLocation() {
     this.locationService.patchLocation(this.locationService.formToLocationApi(this.locationForm.value), this.data.locationTable!.id)
-                        .subscribe(
-                          (res) => {
-                            this.progressBar = false;
-                            this.loading = false;
-                            this.dialogRef.close(res);
-                          },
-                          (err) => {
-                            this.dialogRef.close(err.error.text);
-                          }
-                        );
+      .subscribe(
+        (res) => {
+          this.progressBar = false;
+          this.loading = false;
+          this.dialogRef.close(res);
+        },
+        (err) => {
+          this.dialogRef.close(err.error.text);
+        }
+      );
   }
   createLocation() {
     this.locationService.putLocation(this.locationService.formToLocationApi(this.locationForm.value))
-                        .subscribe(
-                          (res) => {
-                            this.progressBar = false;
-                            this.loading = false;
-                            this.dialogRef.close(res);
-                          },
-                          (err) => {
-                            this.dialogRef.close(err.error.text);
-                          }
-                        );
+      .subscribe(
+        (res) => {
+          this.progressBar = false;
+          this.loading = false;
+          this.dialogRef.close(res);
+        },
+        (err) => {
+          this.dialogRef.close(err.error.text);
+        }
+      );
   }
 }
