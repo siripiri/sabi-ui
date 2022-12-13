@@ -1,31 +1,39 @@
-<mat-toolbar  color="primary">
-    <h2 mat-dialog-title>New Location Form</h2>
-  </mat-toolbar>
-  <mat-progress-bar mode="indeterminate" *ngIf= "progressBar"></mat-progress-bar>
-  <br>
-  <form class="container" [formGroup]="lorryForm">
-    <mat-form-field >
-      <mat-label>Number Plate</mat-label>
-      <input matInput formControlName="numberPlate" [errorStateMatcher]="matcher">
-      <mat-hint>ex: TN 36 V 1234</mat-hint>
-      <mat-error>*Required or format error</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Type</mat-label>
-      <input matInput formControlName="type">
-      <mat-error *ngIf="lorryForm.get('type')?.invalid && lorryForm.get('type')?.touched">*This field is required</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Model Number</mat-label>
-      <input matInput formControlName="modelNumber">
-      <mat-error *ngIf="lorryForm.get('modelNumber')?.invalid && lorryForm.get('modelNumber')?.touched">*This field is required</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Manufacturer</mat-label>
-      <input matInput formControlName="manufacturer">
-      <mat-error *ngIf="lorryForm.get('manufacturer')?.invalid && lorryForm.get('manufacturer')?.touched">*This field is required</mat-error>
-    </mat-form-field>
-    <app-assign-driver></app-assign-driver>
-    <button mat-raised-button color="primary" [disabled]="lorryForm.invalid" style="position: relative; left: 60px; top: 10px;" (click)="submitForm()">Submit</button>
-    <button mat-raised-button color="accent" [mat-dialog-close]="false" style="position: relative; left: 100px; top: 10px;">Close</button>
-  </form>
+<mat-toolbar color="primary">
+  <h2 *ngIf="data.update!=true; else elseBlock" mat-dialog-title>New Lorry Form</h2>
+  <ng-template #elseBlock>
+    <h2 mat-dialog-title>Edit Lorry Form</h2>
+  </ng-template>
+</mat-toolbar>
+<mat-progress-bar mode="indeterminate" *ngIf="progressBar"></mat-progress-bar>
+<br>
+<form class="container" [formGroup]="lorryForm">
+  <mat-form-field>
+    <mat-label>Number Plate</mat-label>
+    <input matInput formControlName="numberPlate" [errorStateMatcher]="matcher">
+    <mat-hint>ex: TN 36 V 1234</mat-hint>
+    <mat-error>*Required or format error</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <input matInput formControlName="type">
+    <mat-error *ngIf="lorryForm.get('type')?.invalid && lorryForm.get('type')?.touched">*This field is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Model Number</mat-label>
+    <input matInput formControlName="modelNumber">
+    <mat-error *ngIf="lorryForm.get('modelNumber')?.invalid && lorryForm.get('modelNumber')?.touched">*This field is
+      required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Manufacturer</mat-label>
+    <input matInput formControlName="manufacturer">
+    <mat-error *ngIf="lorryForm.get('manufacturer')?.invalid && lorryForm.get('manufacturer')?.touched">*This field is
+      required</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary"
+    [disabled]="lorryForm.invalid || loading || (this.data.update ? !this.lorryForm.dirty : false)"
+    style="position: relative; left: 60px; top: 10px;" (click)="submitForm()">Submit</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="false"
+    style="position: relative; left: 100px; top: 10px;">Close</button>
+</form>

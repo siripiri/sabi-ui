@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { SelectionModel } from '@angular/cdk/collections';
-import { LorryTable } from './lorry.model';
+import { Lorry, LorryTable } from './lorry.model';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
@@ -54,20 +53,15 @@ export class LorryComponent implements OnInit {
   createLorry() {
     let dialogRef = this.__dialog.open(
       DialogLorryComponent, {
-      height: '500px',
+      height: '440px',
       width: '390px',
       data: { update: false }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result?.id && result?.driverName) {
-        this.openSnackBar(`Added new Lorry (${result?.numberPlate}) with driver ${result?.driverName}`, "Dismiss");
+      if (result?.id) {
+        this.openSnackBar(`Added new Lorry (${result?.numberPlate})`, "Dismiss");
         this.ngOnInit();
-      } else if (result?.id) {
-        this.openSnackBar(`Added new Lorry (${result?.numberPlate}) without driver`, "Dismiss");
-        this.ngOnInit();
-      } else if (result) {
-        this.openSnackBar(`Error creating lorry: ${result}`, "Dismiss");
       }
     });
   }
@@ -75,13 +69,38 @@ export class LorryComponent implements OnInit {
   updateLorry(lorry: LorryTable) {
     let dialogRef = this.__dialog.open(
       DialogLorryComponent, {
-      height: '500px',
+      height: '440px',
       width: '390px',
       data: { update: true, lorry: lorry }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.id) {
+        this.openSnackBar(`Updated Lorry (${result?.numberPlate})`, "Dismiss");
+        this.ngOnInit();
+      }
     });
   }
 
   deleteLorry() {
+
+  }
+
+  unassignDriver(lorry: Lorry) {
+    if(lorry.driverName == 'Not Assigned') return;
+
+    if(confirm(`Are you sure to unassign driver(${lorry.driverName}) in lorry(${lorry.numberPlate})`)){
+      this.lorryService.unassignDriver(lorry).subscribe(
+        (result: Lorry) => {
+          if(result != null && result.driverId == null){
+            this.openSnackBar(`Sucessfully unassigned driver in lorry (${result.numberPlate})`, 'Dismiss');
+            this.ngOnInit();
+          }
+        }, (err) => {
+          console.log(err);
+        }
+      )
+    }
 
   }
 

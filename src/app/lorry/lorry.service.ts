@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, retry } from 'rxjs';
 import { ApiServiceService } from '../api-services/api-service.service';
 import { Driver, Lorry, LorryTable } from './lorry.model';
 
@@ -44,13 +44,15 @@ export class LorryService {
     return this.apiService.getDriverNamesData();
   }
 
-  postLorrywithDriver(lorry: any, driverId: number){
-    lorry.driverId = driverId;
-    console.log(lorry);
+  putLorry(lorry: Lorry): Observable<any> {
     return this.apiService.putLorry(lorry);
   }
 
-  postLorryWithoutDriver(lorry: Lorry): Observable<any> {
-    return this.apiService.putLorry(lorry);
+  patchLorry(lorry: Lorry): Observable<Lorry>{
+    return this.apiService.patchLorry(lorry);
+  }
+
+  unassignDriver(lorry: Lorry): Observable<any> {
+    return this.apiService.unassignDriver(lorry);
   }
 }

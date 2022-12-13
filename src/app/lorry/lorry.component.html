@@ -77,7 +77,7 @@
                             <mat-icon>delete</mat-icon>
                             <span>delete location</span>
                         </button>
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="unassignDriver(row)">
                             <span *ngIf="row.driverName == 'Not Assigned'; else elseBlock">
                                 <mat-icon>assignment_ind</mat-icon>
                                 Assign Driver

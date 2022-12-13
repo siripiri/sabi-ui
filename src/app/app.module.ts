@@ -31,7 +31,7 @@ import { MenuItemComponent } from './dashboard-layout/menu-item/menu-item.compon
 import { TripsComponent } from './trips/trips.component';
 import { LocationComponent } from './location/location.component';
 import { DialogLocationComponent } from './location/dialog-location/dialog-location.component';
-import { SnackBarComponent } from './snack-bar/snack-bar.component';
+import { SnackBarComponent } from './common/snack-bar/snack-bar.component';
 import { LorryComponent } from './lorry/lorry.component';
 import { AssignDriverComponent } from './lorry/assign-driver/assign-driver.component';
 import { DialogLorryComponent } from './lorry/dialog-lorry/dialog-lorry.component';

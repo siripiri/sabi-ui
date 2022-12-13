@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { catchError } from 'rxjs';
 import { DialogLorry, Lorry } from '../lorry.model';
 import { LorryService } from '../lorry.service';
 
@@ -20,7 +22,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class DialogLorryComponent implements OnInit {
 
-  public progressBar = true;
+  public progressBar = false;
   public loading = false;
 
   lorryWithDriver!: Lorry;
@@ -30,7 +32,8 @@ export class DialogLorryComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogLorryComponent>,
     private lorryService: LorryService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogLorry
+    @Inject(MAT_DIALOG_DATA) public data: DialogLorry,
+    private __snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -43,8 +46,8 @@ export class DialogLorryComponent implements OnInit {
     manufacturer: new FormControl(`${this.check('manufacturer')}`, Validators.required)
   });
 
-  check(arg: any): any{
-    if(this.data.update){
+  check(arg: any): any {
+    if (this.data.update) {
       const str: keyof Lorry = arg;
       return this.data.lorry[str];
     }
@@ -59,33 +62,38 @@ export class DialogLorryComponent implements OnInit {
   }
 
   createLorry() {
-    this.lorryService.onDriverSelect.subscribe(value => {
-      if (value != null) {
-        console.log(value);
-        this.lorryService.postLorrywithDriver(this.lorryForm.value, value.id)
-          .subscribe((result) => {
-            this.progressBar = false;
-            this.loading = false;
-            result.driverName = value.driverName;
-            this.dialogRef.close(result);
-          }, (err) => {
-            this.dialogRef.close(err.error.text);
-          });
-      }
-      else {
-        this.lorryService.postLorryWithoutDriver(this.lorryForm.value)
-          .subscribe((result) => {
-            this.progressBar = false;
-            this.loading = false;
-            this.dialogRef.close(result);
-          }, (err) => {
-            this.dialogRef.close(err.error.text);
-          });
-      }
-    }).unsubscribe();
+    this.lorryService.putLorry(this.lorryForm.value)
+      .subscribe((result) => {
+        this.progressBar = false;
+        this.loading = false;
+        this.dialogRef.close(result);
+      }, (err) => {
+        if (err.status == 400) {
+          this.openSnackBar(`BadResquest: ${err.error.message}`, 'Dismiss');
+          this.dialogRef.close(err.error.message);
+        }
+        this.openSnackBar(`Error: ${err.error.text}`, "Dismiss");
+        this.dialogRef.close(err.error.text);
+      });
   }
 
   updateLorry() {
+    this.lorryService.patchLorry(this.lorryForm.value)
+      .subscribe((result) => {
+        this.progressBar = false;
+        this.loading = false;
+        this.dialogRef.close(result);
+      }, (err) => {
+        if (err.status == 400) {
+          this.openSnackBar(`BadResquest: ${err.error.message}`, 'Dismiss');
+          this.dialogRef.close(err.error.message);
+        }
+        this.openSnackBar(`Error: ${err.error}`, "Dismiss");
+        this.dialogRef.close(err.error);
+      });
+  }
 
+  openSnackBar(message: string, action: string | undefined) {
+    this.__snackBar.open(message, action, { duration: 5000 });
   }
 }
