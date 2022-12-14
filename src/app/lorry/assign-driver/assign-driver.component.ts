@@ -1,7 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import { Driver, Lorry } from '../lorry.model';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogAssign, Driver, Lorry } from '../lorry.model';
 import { LorryService } from '../lorry.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -19,30 +21,50 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AssignDriverComponent implements OnInit {
 
-  selectedValue:Driver | undefined;
-  datasource:Driver[] | undefined;
+  selectedValue: Driver | undefined;
+  datasource: Driver[] | undefined;
   selected = new FormControl('valid', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
 
   @Output() assignDriver = new EventEmitter<string>();
+  progressBar: boolean = false;
 
-  constructor(private lorryService:LorryService) { }
+  constructor(
+    private lorryService: LorryService,
+    private dialogRef: MatDialogRef<AssignDriverComponent>,
+    private __snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) private data: DialogAssign
+  ) { }
 
   ngOnInit(): void {
     this.lorryService.getDriverNamesDropDown()
-                .subscribe(results => {
-                  this.datasource = results;
-                });
+      .subscribe(results => {
+        this.datasource = results;
+      });
   }
 
-  submit() {
-    console.log(this.selectedValue?.driverName);
-    //this.assigndriver.emit(this.selectedValue?.driverName);
-  } 
+  submitForm() {
+    this.progressBar = true;
+    this.data.lorry.driverName = this.selected.value.driverName;
+    this.lorryService.assignDriver(this.data.lorry)
+      .subscribe(result => {
+        this.dialogRef.close(result);
+      }, (err) => {
+        if (err.status == 400) {
+          this.openSnackBar(`BadResquest: ${err.error.message}`, 'Dismiss');
+          this.dialogRef.close(err.error.message);
+        }
+        this.openSnackBar(`Error: ${err.error}`, "Dismiss");
+        this.dialogRef.close(err.error);
+      });
+  }
 
-  async clickedValue(driverName:Driver): Promise<void> {
+  async clickedValue(driverName: Driver): Promise<void> {
     this.lorryService.onDriverSelect.next(driverName);
   }
 
+  openSnackBar(message: string, action: string | undefined) {
+    this.__snackBar.open(message, action, { duration: 5000 });
+  }
 }

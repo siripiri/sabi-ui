@@ -48,11 +48,15 @@ export class LorryService {
     return this.apiService.putLorry(lorry);
   }
 
-  patchLorry(lorry: Lorry): Observable<Lorry>{
+  patchLorry(lorry: Lorry): Observable<Lorry> {
     return this.apiService.patchLorry(lorry);
   }
 
-  unassignDriver(lorry: Lorry): Observable<any> {
+  unassignDriver(lorry: Lorry): Observable<Lorry> {
     return this.apiService.unassignDriver(lorry);
+  }
+
+  assignDriver(lorry: Lorry): Observable<Lorry> {
+    return this.apiService.assignDriver(lorry);
   }
 }

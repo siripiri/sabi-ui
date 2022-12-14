@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LorryService } from './lorry.service';
 import { DialogLorryComponent } from './dialog-lorry/dialog-lorry.component';
+import { AssignDriverComponent } from './assign-driver/assign-driver.component';
 
 @Component({
   selector: 'app-lorry',
@@ -86,8 +87,23 @@ export class LorryComponent implements OnInit {
 
   }
 
-  unassignDriver(lorry: Lorry) {
-    if(lorry.driverName == 'Not Assigned') return;
+  assignDriver(lorry: Lorry) {
+    if(lorry.driverName == 'Not Assigned') {
+      let dialogRef = this.__dialog.open(
+        AssignDriverComponent, {
+          height: '270px',
+          width: '390px',
+          data: { lorry: lorry }
+        });
+      
+        dialogRef.afterClosed().subscribe(result => {
+          if(result?.id) {
+            this.openSnackBar(`the driver(${result.driverName}) is assigned to lorry(${result.numberPlate})`, 'Dismiss');
+            this.ngOnInit();
+          }
+        });
+        return;
+    }
 
     if(confirm(`Are you sure to unassign driver(${lorry.driverName}) in lorry(${lorry.numberPlate})`)){
       this.lorryService.unassignDriver(lorry).subscribe(

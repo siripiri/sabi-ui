@@ -29,3 +29,7 @@ export interface DialogLorry {
     update: boolean,
     lorry: Lorry
 }
+
+export interface DialogAssign {
+    lorry: Lorry
+}

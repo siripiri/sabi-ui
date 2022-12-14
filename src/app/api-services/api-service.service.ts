@@ -22,6 +22,7 @@ export class ApiServiceService {
   private PutLorry = "http://localhost:8080/api/v1/lorry";
   private PatchLorryUrl = "http://localhost:8080/api/v1/lorry"
   private UnAssignDriver = "http://localhost:8080/api/v1/lorry/unassignDriver";
+  private AssignDriverUrl = "http://localhost:8080/api/v1/lorry/assignDriver"
 
   getLocationData(): Observable<Location[]> {
     return this.__http.get<Location[]>(this.GetLocationsUrl);
@@ -53,5 +54,9 @@ export class ApiServiceService {
 
   unassignDriver(lorry: Lorry): Observable<Lorry> {
     return this.__http.put<Lorry>(this.UnAssignDriver, lorry);
+  }
+
+  assignDriver(lorry: Lorry): Observable<Lorry> {
+    return this.__http.put<Lorry>(this.AssignDriverUrl, lorry);
   }
 }
