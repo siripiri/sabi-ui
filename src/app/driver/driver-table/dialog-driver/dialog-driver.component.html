@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+    <h2 mat-dialog-title>New Driver Form</h2>
+</mat-toolbar>
+<mat-progress-bar mode="indeterminate" *ngIf="progressBar"></mat-progress-bar>
+<br>
+<form class="container" [formGroup]="driverForm">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="driverName" >
+        <mat-error *ngIf="driverForm.get('driverName')?.invalid && driverForm.get('driverName')?.touched">*This field is
+            required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Date Of Birth</mat-label>
+        <input matInput formControlName="dob">
+        <mat-error *ngIf="driverForm.get('dob')?.invalid && driverForm.get('dob')?.touched">*This field is
+            required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Children Details</mat-label>
+        <input matInput formControlName="childrenDetails">
+        <mat-error *ngIf="driverForm.get('childrenDetails')?.invalid && driverForm.get('childrenDetails')?.touched">*This
+            field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address">
+        <mat-error *ngIf="driverForm.get('address')?.invalid && driverForm.get('address')?.touched">*This field is
+            required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city">
+        <mat-error *ngIf="driverForm.get('city')?.invalid && driverForm.get('city')?.touched">*This field is
+            required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state">
+        <mat-error *ngIf="driverForm.get('state')?.invalid && driverForm.get('state')?.touched">*This field is
+            required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>ZipCode</mat-label>
+        <input matInput formControlName="zipcode">
+        <mat-error *ngIf="driverForm.get('zipcode')?.invalid && driverForm.get('zipcode')?.touched">*zipcode should
+            be 6 digit number</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary"
+        [disabled]="driverForm.invalid || loading || (this.data.update ? !this.driverForm.dirty : false)"
+        style="position: relative; left: 60px; top: 10px;" (click)="submitForm()">Submit</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="false"
+        style="position: relative; left: 100px; top: 10px;">Close</button>
+</form>

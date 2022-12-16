@@ -34,7 +34,12 @@ import { DialogLocationComponent } from './location/dialog-location/dialog-locat
 import { SnackBarComponent } from './common/snack-bar/snack-bar.component';
 import { LorryComponent } from './lorry/lorry.component';
 import { AssignDriverComponent } from './lorry/assign-driver/assign-driver.component';
-import { DialogLorryComponent } from './lorry/dialog-lorry/dialog-lorry.component';
+import { DialogLorryComponent } from './lorry/lorry-table/dialog-lorry/dialog-lorry.component';
+import { LorryTableComponent } from './lorry/lorry-table/lorry-table.component';
+import { DriverTableComponent } from './driver/driver-table/driver-table.component';
+import { DialogDriverComponent } from './driver/driver-table/dialog-driver/dialog-driver.component';
+import { DriverComponent } from './driver/driver.component';
+import { LocationTableComponent } from './location/location-table/location-table.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,12 @@ import { DialogLorryComponent } from './lorry/dialog-lorry/dialog-lorry.componen
     SnackBarComponent,
     LorryComponent,
     AssignDriverComponent,
-    DialogLorryComponent
+    DialogLorryComponent,
+    LorryTableComponent,
+    DriverTableComponent,
+    DialogDriverComponent,
+    DriverComponent,
+    LocationTableComponent
   ],
   imports: [
     BrowserModule,

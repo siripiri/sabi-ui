@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ObservedValueOf } from 'rxjs';
+import { Observable, ObservedValueOf, retry } from 'rxjs';
 import { Location, LocationApi } from '../location/location.model';
 import { Driver, Lorry } from '../lorry/lorry.model';
 
@@ -22,7 +22,11 @@ export class ApiServiceService {
   private PutLorry = "http://localhost:8080/api/v1/lorry";
   private PatchLorryUrl = "http://localhost:8080/api/v1/lorry"
   private UnAssignDriver = "http://localhost:8080/api/v1/lorry/unassignDriver";
-  private AssignDriverUrl = "http://localhost:8080/api/v1/lorry/assignDriver"
+  private AssignDriverUrl = "http://localhost:8080/api/v1/lorry/assignDriver";
+
+  private GetDriverWithLorry = "http://localhost:8080/api/v1/driver/lorry";
+  private PutDriver = "http://localhost:8080/api/v1/driver";
+  private GetDriverById = "http://localhost:8080/api/v1/driver";
 
   getLocationData(): Observable<Location[]> {
     return this.__http.get<Location[]>(this.GetLocationsUrl);
@@ -58,5 +62,17 @@ export class ApiServiceService {
 
   assignDriver(lorry: Lorry): Observable<Lorry> {
     return this.__http.put<Lorry>(this.AssignDriverUrl, lorry);
+  }
+
+  getDriversData(): Observable<Driver[]> {
+    return this.__http.get<Driver[]>(this.GetDriverWithLorry);
+  }
+
+  putDriver(driver:any): Observable<Driver> {
+    return this.__http.put<Driver>(this.PutDriver, driver);
+  }
+
+  getDriverById(id:number): Observable<Driver> {
+    return this.__http.get<Driver>(this.GetDriverById + '/' + id)
   }
 }

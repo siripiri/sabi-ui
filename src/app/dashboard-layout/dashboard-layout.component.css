@@ -1,42 +1,37 @@
-
 :host {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  mat-drawer {
-    min-width: 200px;
-    max-width: 300px;
-    background-color: none;
-  }
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
-  .margin-left {
-    margin-left: 300px;
-  }
-  
-  mat-drawer-container  {
-    min-height: 100vh;
-  }
-  
-  ::ng-deep .mat-drawer-inner-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: #ecececc2;
-  }
-  
-  
-  .center {
-    width: 70%;
-    left: 10%;
-    justify-content: center;
-  }
-  
-  
-  .date-hour-content {
-    background: #3f51b538;
-    text-align: center;
-    padding: 10px 0;
-  }
+.mat-drawer {
+  min-width: 200px;
+  max-width: 300px;
+  background: var(--dark-mode-black-light);
+}
 
+.margin-left {
+  margin-left: 300px;
+}
+
+mat-drawer-container {
+  background-color: var(--dark-mode-black-dark);
+  min-height: 100vh;
+}
+
+mat-drawer-content{
+  padding: 15px;
+}
+
+::ng-deep .mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--dark-mode-black-light);
+}
+
+.date-hour-content {
+  background: #3f51b538;
+  text-align: center;
+  padding: 10px 0;
+}

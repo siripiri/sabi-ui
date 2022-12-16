@@ -1,0 +1,106 @@
+/* Filter input */
+.filter {
+  width: 70%;
+  margin: 20px;
+  color: var(--dark-mode-white);
+}
+
+mat-label {
+  color: var(--dark-mode-white);
+}
+
+input::placeholder {
+  color: var(--dark-mode-white);
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: var(--dark-mode-white) !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  /*change color of underline*/
+  background-color: var(--dark-mode-white) !important;
+}
+
+::ng-deep .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: var(--dark-mode-white) !important;
+}
+
+/* Table Card */
+
+.table-card {
+  margin: 20px;
+  background-color: #1a1a22;
+}
+
+.table-card h2 {
+  font-weight: 700;
+  color: var(--dark-mode-white);
+}
+
+.table-card .subHeader {
+  padding-left: 2%;
+}
+
+.table-card p {
+  color: var(--dark-mode-grey);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-radius: 8px;
+  border-collapse: collapse;
+  border-radius: 0em;
+  overflow: hidden;
+}
+
+/* Table Header */
+::ng-deep .mat-header-cell {
+  color: var(--dark-mode-white);
+  background-color: #1a1a22;
+  border-radius: 0px;
+  padding: 0px;
+  font-size: 15px;
+}
+
+/* Table Row */
+.mat-cell {
+  color: var(--dark-mode-grey);
+  border-bottom-color: var(--dark-mode-grey);
+  background-color: #1a1a22;
+}
+
+/* Action Button */
+::ng-deep .mat-menu-content {
+  background-color: #1a1a22;
+}
+
+.mat-menu-item {
+  color: var(--dark-mode-white);
+}
+
+.mat-icon {
+  color: var(--dark-mode-white);
+}
+
+/* Paginator */
+.mat-paginator {
+  background-color: #1a1a22;
+  color: var(--dark-mode-white);
+}
+
+::ng-deep .mat-select-value-text {
+  color: var(--dark-mode-white) !important;
+}
+
+/* Warning Badge */
+.text-bg-warning{
+  background-color: #ffc107;
+  color: white;
+  font-weight: 600;
+  font-size: small;
+}
+

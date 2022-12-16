@@ -43,11 +43,11 @@ input::placeholder {
 
 /* Button */
 ::ng-deep .mat-raised-button {
-   color: var(--dark-mode-white);
-   background-color: var(--dark-mode-button);
+  color: var(--dark-mode-white);
+  background-color: var(--dark-mode-button);
 }
 
 ::ng-deep .mat-raised-button.mat-button-disabled.mat-button-disabled {
-    color: var(--dark-mode-grey);
-    background-color: var(--dark-mode-button-disabled);
+  color: var(--dark-mode-grey);
+  background-color: var(--dark-mode-button-disabled);
 }

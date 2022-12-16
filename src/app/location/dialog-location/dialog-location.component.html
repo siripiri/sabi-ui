@@ -1,4 +1,4 @@
-<mat-toolbar  color="primary">
+<mat-toolbar>
     <h2 *ngIf="data.update!=true; else elseBlock" mat-dialog-title>New Location Form</h2>
     <ng-template #elseBlock><h2 mat-dialog-title>Edit Location Form</h2></ng-template>
   </mat-toolbar>
@@ -35,6 +35,6 @@
       <input matInput formControlName="kmAllocated">
       <mat-error *ngIf="locationForm.get('kmAllocated')?.invalid && locationForm.get('kmAllocated')?.touched">*Km should be number</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="submitForm()" [disabled]="locationForm.invalid || loading || (this.data.update ? !this.locationForm.dirty : false)" style="position: relative;left: 80px;" >Submit</button>
-    <button mat-raised-button color="accent" [mat-dialog-close]="false" style="position: relative;left: 110px;">Close</button>
+    <button mat-raised-button (click)="submitForm()" [disabled]="locationForm.invalid || loading || (this.data.update ? !this.locationForm.dirty : false)" style="position: relative;left: 80px;" >Submit</button>
+    <button mat-raised-button  [mat-dialog-close]="false" style="position: relative;left: 110px;">Close</button>
   </form>

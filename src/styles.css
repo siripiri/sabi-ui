@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-
+:root {
+    --dark-mode-toolbar-header: #24252E;
+    --dark-mode-black-light: #1A1A22;
+    --dark-mode-black-dark: #101014;
+    --dark-mode-white: #dfdfe0;
+    --dark-mode-grey: #9a9a9a;
+    --dark-mode-button: #3E4A60;
+    --dark-mode-button-disabled: #383F50;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

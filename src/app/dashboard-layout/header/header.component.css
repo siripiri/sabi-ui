@@ -1,18 +1,19 @@
 .spacer {
-    flex: 1 1 auto;
-  }
-  
-  .title {
-    cursor: pointer;
-    font-size: 18px;
-  }
-  
-  .welcome-text {
-    font-size: smaller;
-  }
+  flex: 1 1 auto;
+}
 
-mat-toolbar{
-    color: rgba(255,255,255, 0.75);;
+.title {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.welcome-text {
+  font-size: smaller;
+}
+
+mat-toolbar {
+  color: var(--dark-mode-white);
+  background-color: var(--dark-mode-toolbar-header);
 }
 
 .menu {

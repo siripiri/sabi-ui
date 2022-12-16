@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu } from './menu-model';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -8,7 +9,7 @@ import { Menu } from './menu-model';
 })
 export class DashboardLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder) { }
 
   opened=true;
 

@@ -1,3 +1,5 @@
+import { Address } from "../location/location.model";
+
 export interface LorryTable {
     id:number;
     numberPlate:string;
@@ -5,6 +7,15 @@ export interface LorryTable {
     modelNumber:string;
     manufacturer:string;
     driverName:string;
+}
+
+export interface DriverTable {
+    id:number;
+    name:string;
+    age:number;
+    address:string;
+    childrenDetails:string;
+    lorry:string;
 }
 
 export interface Lorry {
@@ -19,10 +30,14 @@ export interface Lorry {
 }
 
 export interface Driver {
-    id:number | null;
+    id:number;
     driverName:string;
-    lorryId:number;
-    api_url:string | null;
+    lorryId:number | null;
+    numberPlate: string;
+    childrenDetails:string;
+    dob:string;
+    address:Address;
+    api_url:string;
 }
 
 export interface DialogLorry {
@@ -32,4 +47,9 @@ export interface DialogLorry {
 
 export interface DialogAssign {
     lorry: Lorry
+}
+
+export interface DialogDriver {
+    update: boolean,
+    driver: Driver
 }

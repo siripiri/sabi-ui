@@ -1,0 +1,54 @@
+.header {
+    margin: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-radius: 8px;
+    border-collapse: collapse;
+    border-radius: 0.5em;
+    overflow: hidden;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .table1 {
+    margin: 5px;
+  }
+  
+  .filter {
+    width: 70%;
+    margin: 20px;
+  }
+  
+  .navBar {
+    margin: 20px;
+  }
+  
+  .text-bg-warning {
+    background-color: #ffc107;
+    color: white;
+    font-weight: 600;
+    font-size: small;
+  }
+  
+  .table-card {
+    margin: 20px;
+  }
+  
+  .table-card h2 {
+    font-weight: 700;
+    color: #2c3e50;
+  }
+  
+  .table-card .subHeader {
+    padding-left: 2%;
+  }
+  
+  .table-card p {
+    color: #808b96;
+  }
+  

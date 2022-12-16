@@ -1,5 +1,7 @@
+/* Header */
 .header {
   margin: 20px;
+  color: var(--dark-mode-white);
 }
 
 .header h1 {
@@ -7,50 +9,16 @@
   font-size: x-large;
 }
 
-table {
-  width: 100%;
-  border-radius: 8px;
-  border-collapse: collapse;
-  border-radius: 0.5em;
-  overflow: hidden;
+/* breadcrumb */
+.navBar {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
+.breadcrumb {
+  background-color: #1a1a22;
 }
 
-.table1 {
-  margin: 5px;
-}
-
-.filter {
-  width: 70%;
-  margin: 20px;
-}
-
-.navBar{
-  margin: 20px;
-}
-
-.MyClass{
-  background-color: red;
-  color: red;
-}
-
-.table-card {
-  margin: 20px;
-}
-
-.table-card h2 {
-  font-weight: 700;
-  color: #2C3E50;
-}
-
-.table-card .subHeader {
-  padding-left: 2%;
-}
-
-.table-card p {
-  color: #808B96;
+.breadcrumb-item .active {
+  color: var(--dark-mode-grey);
 }
