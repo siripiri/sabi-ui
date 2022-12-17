@@ -15,7 +15,7 @@ import { DialogDriverComponent } from './dialog-driver/dialog-driver.component';
 })
 export class DriverTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'age', 'address', 'childrenDetails', 'lorry', 'action'];
+  displayedColumns: string[] = ['image', 'name', 'age', 'address', 'childrenDetails', 'lorry', 'action'];
   dataSource!: MatTableDataSource<DriverTable>;
   sizeOfDriver:number = 0;
 

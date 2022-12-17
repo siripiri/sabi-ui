@@ -49,7 +49,8 @@ export class LorryService {
     return this.apiService.putLorry(lorry);
   }
 
-  patchLorry(lorry: Lorry): Observable<Lorry> {
+  patchLorry(lorry: Lorry, lorryId:number | null ): Observable<Lorry> {
+    lorry.id = lorryId;
     return this.apiService.patchLorry(lorry);
   }
 

@@ -72,6 +72,10 @@ export class ApiServiceService {
     return this.__http.put<Driver>(this.PutDriver, driver);
   }
 
+  patchDriver(driver:Driver): Observable<Driver> {
+    return this.__http.patch<Driver>(this.PutDriver, driver);
+  }
+
   getDriverById(id:number): Observable<Driver> {
     return this.__http.get<Driver>(this.GetDriverById + '/' + id)
   }

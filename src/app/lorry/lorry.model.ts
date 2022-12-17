@@ -11,6 +11,7 @@ export interface LorryTable {
 
 export interface DriverTable {
     id:number;
+    image?: string;
     name:string;
     age:number;
     address:string;

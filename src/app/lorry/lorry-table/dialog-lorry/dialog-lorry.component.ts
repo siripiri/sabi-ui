@@ -77,7 +77,7 @@ export class DialogLorryComponent implements OnInit {
   }
 
   updateLorry() {
-    this.lorryService.patchLorry(this.lorryForm.value)
+    this.lorryService.patchLorry(this.lorryForm.value, this.data?.lorry.id)
       .subscribe((result) => {
         this.progressBar = false;
         this.loading = false;

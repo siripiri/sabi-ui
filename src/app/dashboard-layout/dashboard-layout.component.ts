@@ -17,25 +17,26 @@ export class DashboardLayoutComponent implements OnInit {
     {
       title: 'Dashboard',
       icon: 'dashboard',
-      link: '/dashboard',
-      color: '#ABB2B9'
+      link: '/dashboard'
     },
     {
       title: 'Trips',
-      icon: 'commute',
-      color: '#ABB2B9'
+      icon: 'commute'
     },
     {
       title: 'Lorry',
       icon: 'directions_car',
-      link: '/lorry',
-      color: '#ABB2B9'
+      link: '/lorry'
+    },
+    {
+      title: 'Driver',
+      icon: 'person',
+      link: '/driver'
     },
     {
       title: 'Location',
       icon: 'location_on',
-      link: '/location',
-      color: '#ABB2B9'
+      link: '/location'
     }
   ];
 

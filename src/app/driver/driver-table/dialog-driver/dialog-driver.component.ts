@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Address } from 'src/app/location/location.model';
 import { DialogDriver, Driver } from '../../../lorry/lorry.model';
 import { LorryService } from '../../../lorry/lorry.service';
+import { DriverService } from '../../driver.service';
 
 @Component({
   selector: 'app-dialog-driver',
@@ -19,6 +20,7 @@ export class DialogDriverComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogDriverComponent>,
     private lorryService: LorryService,
+    private driverService: DriverService,
     @Inject(MAT_DIALOG_DATA) public data: DialogDriver,
     private __snackBar: MatSnackBar
   ) { }
@@ -42,7 +44,7 @@ export class DialogDriverComponent implements OnInit {
       let data = this.data.driver[str];
       if(arg2) {
         const str1: keyof Address = arg2;
-        //return data[str1];
+        return this.data.driver.address[str1];
       }
       return data;
     }
@@ -57,7 +59,7 @@ export class DialogDriverComponent implements OnInit {
   }
 
   updateDriver() {
-    this.lorryService.putDriver(this.driverForm.value)
+    this.driverService.patchDriver(this.driverForm.value, this.data.driver.id)
       .subscribe(result => {
         this.progressBar = false;
         this.loading = false;
