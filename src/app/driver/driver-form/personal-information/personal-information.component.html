@@ -1,0 +1,47 @@
+<form [formGroup]="personalInformation">
+    <div formGroupName="personalInformation">
+        <div>
+            <mat-form-field class="example-form-field">
+                <mat-label>Nationality</mat-label>
+                <input matInput placeholder="Nationality" formControlName="nationality"/>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>Religion</mat-label>
+                <input matInput placeholder="Religion" formControlName="religion"/>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>Martial Status</mat-label>
+                <mat-select formControlName="martialStatus">
+                    <mat-option value="Single">single</mat-option>
+                    <mat-option value="Married">married</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="example-form-field">
+                <mat-label>Employment Of Spouse</mat-label>
+                <input matInput placeholder="Employment Of Spouse" formControlName="employmentOfSpouse"/>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>No of Children</mat-label>
+                <input matInput placeholder="No of Children" formControlName="children"/>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>Whats App Number</mat-label>
+                <input matInput formControlName="whatsappNo" />
+            </mat-form-field>
+        </div>
+        <div class="two-form">
+            <mat-form-field class="example-form-field">
+                <mat-label>Driver's Licence</mat-label>
+                <input matInput placeholder="Driver's Licence" formControlName="driverLicence"/>
+            </mat-form-field>
+        </div>
+        <div class="two-form">
+            <mat-form-field class="example-form-field">
+                <mat-label>Aadhar Card</mat-label>
+                <input matInput placeholder="aadharCard" formControlName="aadharCard"/>
+            </mat-form-field>
+        </div>
+    </div>
+</form>

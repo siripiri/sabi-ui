@@ -1,0 +1,14 @@
+<div class="navBar">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <ng-container *ngFor="let link of links">
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span *ngIf="link.active == true; else elseBlock">
+                        <a [attr.href]="link.link">{{link.name}}</a>
+                    </span>
+                    <ng-template #elseBlock>{{link.name}}</ng-template>
+                </li>
+            </ng-container>
+        </ol>
+    </nav>
+</div>

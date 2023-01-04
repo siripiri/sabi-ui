@@ -21,6 +21,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +33,7 @@ import { HeaderComponent } from './dashboard-layout/header/header.component';
 import { MenuItemComponent } from './dashboard-layout/menu-item/menu-item.component';
 import { TripsComponent } from './trips/trips.component';
 import { LocationComponent } from './location/location.component';
-import { DialogLocationComponent } from './location/dialog-location/dialog-location.component';
+import { DialogLocationComponent } from './location/location-table/dialog-location/dialog-location.component';
 import { SnackBarComponent } from './common/snack-bar/snack-bar.component';
 import { LorryComponent } from './lorry/lorry.component';
 import { AssignDriverComponent } from './lorry/assign-driver/assign-driver.component';
@@ -40,6 +43,13 @@ import { DriverTableComponent } from './driver/driver-table/driver-table.compone
 import { DialogDriverComponent } from './driver/driver-table/dialog-driver/dialog-driver.component';
 import { DriverComponent } from './driver/driver.component';
 import { LocationTableComponent } from './location/location-table/location-table.component';
+import { DriverDetailsComponent } from './driver/driver-details/driver-details.component';
+import { DriverFormComponent } from './driver/driver-form/driver-form.component';
+import { ProfileComponent } from './driver/driver-form/profile/profile.component';
+import { PersonalInformationComponent } from './driver/driver-form/personal-information/personal-information.component';
+import { EmergencyContactComponent } from './driver/driver-form/emergency-contact/emergency-contact.component';
+import { FamilyComponent } from './driver/driver-form/family/family.component';
+import { BreadcrumbComponent } from './common/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +68,14 @@ import { LocationTableComponent } from './location/location-table/location-table
     DriverTableComponent,
     DialogDriverComponent,
     DriverComponent,
-    LocationTableComponent
+    LocationTableComponent,
+    DriverDetailsComponent,
+    DriverFormComponent,
+    ProfileComponent,
+    PersonalInformationComponent,
+    EmergencyContactComponent,
+    FamilyComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +100,10 @@ import { LocationTableComponent } from './location/location-table/location-table
     MatSnackBarModule,
     MatProgressBarModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

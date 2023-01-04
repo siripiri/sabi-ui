@@ -1,0 +1,13 @@
+/* breadcrumb */
+.navBar {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.breadcrumb {
+  background-color: #1a1a22;
+}
+
+.breadcrumb-item .active {
+  color: var(--dark-mode-grey);
+}

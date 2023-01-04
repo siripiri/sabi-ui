@@ -1,0 +1,125 @@
+<div class="header">
+    <h1>Profile Details</h1>
+</div>
+
+
+<app-breadcrumb [links]="links"></app-breadcrumb>
+
+<!-- Profile Card-->
+<mat-card class="profile">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col col-lg-5">
+                        <img src="../.././../assets/image/img_avatar.png" alt="Avatar">
+                    </div>
+                    <div class="col-6" style="margin-top: 10px;">
+                        <mat-card-header>
+                            <mat-card-title>{{ driver.profile.driverName }}</mat-card-title>
+                            <mat-card-subtitle style="margin: -8px 0px 18px 0px;">Driver</mat-card-subtitle>
+                            <mat-card-subtitle style="margin: -13px 0px 18px 0px;">Date Of joining:
+                                24/05/1999</mat-card-subtitle>
+                            <mat-card-subtitle style="margin: -13px 0px 18px 0px;">Age: {{ calculateAge(driver.profile.dob) }}</mat-card-subtitle>
+                        </mat-card-header>
+                    </div>
+                </div>
+            </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div class="col">
+                <p><b>Phone Number : </b> <span class="fontty">{{ driver.profile.phoneNumber1 }}</span></p>
+                <p><b>BirthDate : </b> <span class="fontty">{{ driver.profile.dob }}</span></p>
+                <p><b>Gender : </b> <span class="fontty">{{ driver.profile.gender }}</span></p>
+                <p><b>Address : </b> <span class="fontty">{{ driver.address.address }}</span></p>
+                <p><b>City : </b> <span class="fontty">{{ driver.address.city }}</span></p>
+                <p><b>State : </b> <span class="fontty">{{ driver.address.state }}</span></p>
+            </div>
+        </div>
+    </div>
+</mat-card>
+
+<div style="display: flex;">
+    <!-- Personal Information -->
+    <mat-card class="personalInformation" style="flex: 1 1 auto;">
+        <mat-card-header>
+            <mat-card-title>Personal Information</mat-card-title>
+            <mat-card-subtitle>personal information of driver</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p><b>Nationality: </b></p>
+                        <p><b>Religion: </b></p>
+                        <p><b>Martial Status: </b></p>
+                        <p><b>Employment of Spouse: </b></p>
+                        <p><b>No of Children: </b></p>
+                        <p><b>Whats App number: </b></p>
+                        <p><b>Driver's Licence: </b></p>
+                        <p><b>Aadhar Card: </b></p>
+                    </div>
+                    <div class="col fontty">
+                        <p>{{ driver.personalInformation.nationality }}</p>
+                        <p>{{ driver.personalInformation.religion }}</p>
+                        <p>{{ driver.personalInformation.martialStatus }}</p>
+                        <p>{{ driver.personalInformation.employmentOfSpouse }}</p>
+                        <p>{{ driver.personalInformation.children }}</p>
+                        <p>{{ driver.personalInformation.whatsappNo }}</p>
+                        <p>{{ driver.personalInformation.driverLicence }}</p>
+                        <p>{{ driver.personalInformation.aadharCard }}</p>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <div>
+        
+    </div>
+    <!-- Emergency Contact -->
+    <mat-card class="emergencyContact" style="flex: 1 1 auto;">
+        <mat-card-header>
+            <mat-card-title>Emergency Contact</mat-card-title>
+            <mat-card-subtitle>Emergency Contact of driver</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <table>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name:</th>
+                    <th>RelationShip:</th>
+                    <th>Phone Number:</th>
+                </tr>
+                <tr class="fontty" *ngFor="let emergencyContact of driver.emergencyContacts; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{emergencyContact.name}}</td>
+                    <td>{{emergencyContact.relationShip}}</td>
+                    <td>{{emergencyContact.phoneNumber}}</td>
+                </tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- family Information -->
+    <mat-card class="emergencyContact" style="flex: 1 1 auto;">
+        <mat-card-header>
+            <mat-card-title>Family Information</mat-card-title>
+            <mat-card-subtitle>Family Information of driver</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <table>
+                <tr>
+                    <th>S.No:</th>
+                    <th>Name:</th>
+                    <th>Date Of Birth:</th>
+                    <th>RelationShip:</th>
+                </tr>
+                <tr class="fontty" *ngFor="let familyInformation of driver.familyInformations; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{familyInformation.name}}</td>
+                    <td>{{familyInformation.dob}}</td>
+                    <td>{{familyInformation.relationShip}}</td>
+                </tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

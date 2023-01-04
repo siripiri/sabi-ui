@@ -1,0 +1,36 @@
+<form [formGroup]="familyInformationForm">
+    <div formArrayName="familyInformations">
+        <div *ngFor="let familyInformationForm of arrayForm.controls; let i = index" [formGroupName]="i"><br />
+            <div [class.formfields]="i > 0">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="name" />
+                </mat-form-field>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Relation ship</mat-label>
+                    <mat-select formControlName="relationShip">
+                        <mat-option value="wife">wife</mat-option>
+                        <mat-option value="husband">husband</mat-option>
+                        <mat-option value="relative">relative</mat-option>
+                        <mat-option value="parent">parent</mat-option>
+                        <mat-option value="child">child</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Date Of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="Birth Date" (dateChange)="changeDatePicker()" formControlName="dob">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <button class="float-left" mat-icon-button color="primary" aria-label="Remove/clear"
+                (click)="removeOrClear(i)" matTooltip="Remove">
+                <mat-icon>highlight_off</mat-icon>
+            </button>
+            <button class="float-left" mat-icon-button color="primary" aria-label="Add" (click)="addForm()"
+                matTooltip="Add">
+                <mat-icon>add_circle_outline</mat-icon>
+            </button>
+        </div>
+    </div>
+</form>

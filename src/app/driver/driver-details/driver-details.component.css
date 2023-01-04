@@ -1,0 +1,75 @@
+/* Header */
+.header {
+  margin: 20px;
+  color: var(--dark-mode-white);
+}
+
+.header h1 {
+  font-weight: 500;
+  font-size: x-large;
+}
+
+
+.profile {
+  margin: auto;
+  width: 80%;
+  background-color: #1a1a22;
+  color: var(--dark-mode-white) !important;
+}
+
+.profile mat-card-subtitle {
+    color: var(--dark-mode-grey) !important;
+}
+
+.profile img {
+  width: 200px;
+  border-radius: 50%;
+  height: 200px;
+}
+
+.profile .fontty {
+    color: var(--dark-mode-grey) !important;
+}
+
+.personalInformation {
+  margin: 20px;
+  width: 30%;
+  background-color: #1a1a22;
+  color: var(--dark-mode-white) !important;
+}
+
+.personalInformation mat-card-subtitle {
+    color: var(--dark-mode-grey) !important;
+}
+
+.personalInformation .content {
+  margin-left: 30px;
+}
+
+.personalInformation .fontty {
+    color: var(--dark-mode-grey) !important;
+}
+
+.emergencyContact {
+    margin: 20px;
+    width: 30%;
+    background-color: #1a1a22;
+    color: var(--dark-mode-white) !important;
+}
+
+.emergencyContact mat-card-subtitle {
+    color: var(--dark-mode-grey) !important;
+}
+
+.emergencyContact .fontty {
+    color: var(--dark-mode-grey) !important;
+}
+
+.emergencyContact table {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 8px;
+  border-collapse: collapse;
+  border-radius: 0em;
+  overflow: hidden;
+}

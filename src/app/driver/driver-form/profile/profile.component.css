@@ -1,0 +1,15 @@
+.one-form mat-form-field {
+  width: 50%;
+}
+
+.two-form mat-form-field {
+  width: 25%;
+}
+
+.example-form-field {
+  margin-right: 10px;
+}
+
+mat-label {
+  color: var(--dark-mode-grey);
+}

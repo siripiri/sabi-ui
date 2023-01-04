@@ -1,0 +1,63 @@
+<form [formGroup]="profile">
+    <div formGroupName="profile">
+
+        <div class="one-form">
+            <mat-form-field>
+                <mat-label>Driver Name</mat-label>
+                <input matInput placeholder="Name" formControlName="driverName"/>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="example-form-field">
+                <mat-label>Gender</mat-label>
+                <mat-select name="gender" formControlName="gender">
+                    <mat-option value="Female">Female</mat-option>
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Non-Binary">Non-Binary</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>Date Of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Birth Date" formControlName="dob">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="two-form">
+            <mat-form-field class="example-form-field">
+                <mat-label>Phone Number 1</mat-label>
+                <input matInput placeholder="Phone Number 1" formControlName="phoneNumber1" />
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>Phone Number 2</mat-label>
+                <input matInput placeholder="Phone Number 2" formControlName="phoneNumber2"/>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div formGroupName="address">
+        <div class="one-form">
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="address" formControlName="address" />
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="example-form-field">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="City" formControlName="city">
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>State</mat-label>
+                <input matInput placeholder="State" formControlName="state">
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>Zipcode</mat-label>
+                <input matInput placeholder="Zipcode" formControlName="zipcode">
+            </mat-form-field>
+        </div>
+    </div>
+</form>

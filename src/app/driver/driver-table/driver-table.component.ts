@@ -4,8 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Driver, DriverTable } from '../../lorry/lorry.model';
-import { LorryService } from '../../lorry/lorry.service';
+import { Router } from '@angular/router';
+import { DriverFormComponent } from '../driver-form/driver-form.component';
+import { DriverTable, DriverForm } from '../driver.model';
+import { DriverService } from '../driver.service';
 import { DialogDriverComponent } from './dialog-driver/dialog-driver.component';
 
 @Component({
@@ -15,7 +17,7 @@ import { DialogDriverComponent } from './dialog-driver/dialog-driver.component';
 })
 export class DriverTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['image', 'name', 'age', 'address', 'childrenDetails', 'lorry', 'action'];
+  displayedColumns: string[] = ['image', 'name', 'gender', 'age', 'address', 'phoneNumber1', 'phoneNumber2', 'lorry', 'action'];
   dataSource!: MatTableDataSource<DriverTable>;
   sizeOfDriver:number = 0;
 
@@ -26,13 +28,14 @@ export class DriverTableComponent implements OnInit {
   paginator!: MatPaginator;
 
   constructor(
-    private lorryService: LorryService,
+    private driverService:DriverService,
     private __dialog: MatDialog,
-    private __snackBar: MatSnackBar
+    private __snackBar: MatSnackBar,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
-    this.lorryService.getDriverTable()
+    this.driverService.getDriverTable()
       .subscribe(result => {
         this.dataSource = new MatTableDataSource(result);
         this.dataSource.paginator = this.paginator;
@@ -52,23 +55,24 @@ export class DriverTableComponent implements OnInit {
 
   createDriver() {
     let dialogRef = this.__dialog.open(
-      DialogDriverComponent, {
-        height: '640px',
-        width: '390px',
+      DriverFormComponent, {
+        height: 'auto',
+        width: '790px',
         data: {update: false}
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result?.id) {
-        this.openSnackBar(`Added new Driver - ${result.driverName}`, 'Dismiss');
+      if(result?.profile?.id) {
+        console.log(result);
+        this.openSnackBar(`Added new Driver - ${result.profile.driverName}`, 'Dismiss');
         this.ngOnInit();
       }
     })
   }
 
   updateDriver(driverTable: DriverTable) {
-    this.lorryService.getDriverById(driverTable.id)
-      .subscribe((result: Driver) => {
+    this.driverService.getDriverById(driverTable.id)
+      .subscribe((result: DriverForm) => {
         let dialogRef = this.__dialog.open(
           DialogDriverComponent, {
             height: '640px',
@@ -85,7 +89,13 @@ export class DriverTableComponent implements OnInit {
       });
   }
 
-  deleteDriver() {}
+  deleteDriver(driverTable: DriverTable) {
+
+  }
+
+  openDriver(driverTable: DriverTable) {
+    this.route.navigate([`/driver/${driverTable.id}`]);
+  }
 
   openSnackBar(message: string, action: string | undefined) {
     this.__snackBar.open(message, action, { duration: 5000 });

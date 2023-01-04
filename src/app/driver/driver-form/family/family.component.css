@@ -1,0 +1,11 @@
+.example-form-field {
+  margin-right: 20px;
+}
+
+.formfields {
+  margin-top: 20px;
+}
+
+mat-label {
+  color: var(--dark-mode-grey);
+}

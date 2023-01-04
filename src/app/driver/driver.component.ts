@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { breadcrumb } from '../common/common.model';
 
 @Component({
   selector: 'app-driver',
@@ -6,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./driver.component.css']
 })
 export class DriverComponent implements OnInit {
+
+  links:breadcrumb[] = [
+    {
+      link: '/',
+      name: 'Dashboard',
+      active: true
+    },
+    {
+      link: '/driver',
+      name: 'Driver Details',
+      active: false
+    }
+  ];
 
   constructor() { }
 

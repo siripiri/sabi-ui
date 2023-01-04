@@ -3,7 +3,8 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DialogAssign, Driver, Lorry } from '../lorry.model';
+import { DialogAssign, Lorry } from '../lorry.model';
+import { Driver } from 'src/app/driver/driver.model';
 import { LorryService } from '../lorry.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */

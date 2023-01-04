@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ObservedValueOf, retry } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Driver, DriverForm } from '../driver/driver.model';
 import { Location, LocationApi } from '../location/location.model';
-import { Driver, Lorry } from '../lorry/lorry.model';
+import { Lorry } from '../lorry/lorry.model';
 
 @Injectable({
   providedIn: 'root'
@@ -76,7 +77,7 @@ export class ApiServiceService {
     return this.__http.patch<Driver>(this.PutDriver, driver);
   }
 
-  getDriverById(id:number): Observable<Driver> {
-    return this.__http.get<Driver>(this.GetDriverById + '/' + id)
+  getDriverById(id:number): Observable<DriverForm> {
+    return this.__http.get<DriverForm>(this.GetDriverById + '/' + id)
   }
 }
