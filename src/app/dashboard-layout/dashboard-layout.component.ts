@@ -37,6 +37,11 @@ export class DashboardLayoutComponent implements OnInit {
       title: 'Location',
       icon: 'location_on',
       link: '/location'
+    },
+    {
+      title: 'Expenses',
+      icon: 'attach_money',
+      link: '/expenses'
     }
   ];
 

@@ -50,6 +50,11 @@ import { PersonalInformationComponent } from './driver/driver-form/personal-info
 import { EmergencyContactComponent } from './driver/driver-form/emergency-contact/emergency-contact.component';
 import { FamilyComponent } from './driver/driver-form/family/family.component';
 import { BreadcrumbComponent } from './common/breadcrumb/breadcrumb.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { ExpensesTableComponent } from './expenses/expenses-table/expenses-table.component';
+import { DialogExpensesComponent } from './expenses/expenses-table/dialog-expenses/dialog-expenses.component';
+import { FuelExpensesTableComponent } from './expenses/fuel-expenses-table/fuel-expenses-table.component';
+import { DialogFuelExpensesComponent } from './expenses/fuel-expenses-table/dialog-fuel-expenses/dialog-fuel-expenses.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +80,12 @@ import { BreadcrumbComponent } from './common/breadcrumb/breadcrumb.component';
     PersonalInformationComponent,
     EmergencyContactComponent,
     FamilyComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    ExpensesComponent,
+    ExpensesTableComponent,
+    DialogExpensesComponent,
+    FuelExpensesTableComponent,
+    DialogFuelExpensesComponent
   ],
   imports: [
     BrowserModule,

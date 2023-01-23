@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { DriverDetailsComponent } from './driver/driver-details/driver-details.component';
-import { DriverFormComponent } from './driver/driver-form/driver-form.component';
 import { DriverComponent } from './driver/driver.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 import { LocationComponent } from './location/location.component';
 import { LorryComponent } from './lorry/lorry.component';
-import { TripsComponent } from './trips/trips.component';
 
 const routes: Routes = [
   {
@@ -23,13 +22,15 @@ const routes: Routes = [
       },
       {
         path: 'driver',
-        component: DriverComponent,
-        children: [
-          {
-            path: ':id',
-            component: DriverDetailsComponent
-          }
-        ]
+        component: DriverComponent
+      },
+      {
+        path: 'driver/:id',
+        component: DriverDetailsComponent
+      },
+      {
+        path: 'expenses',
+        component: ExpensesComponent
       }
     ]
   }

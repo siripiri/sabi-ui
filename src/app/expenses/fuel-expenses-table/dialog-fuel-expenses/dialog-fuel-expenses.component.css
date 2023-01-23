@@ -1,0 +1,58 @@
+mat-form-field {
+  width: 100%;
+  margin: 3px;
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: var(--dark-mode-black-light);
+}
+
+/* toolbar */
+.mat-toolbar {
+  background-color: var(--dark-mode-toolbar-header);
+  color: var(--dark-mode-white);
+}
+
+/* Form fields */
+.mat-form-field {
+  color: var(--dark-mode-white);
+}
+
+mat-label {
+  color: var(--dark-mode-grey);
+}
+
+input::placeholder {
+  color: var(--dark-mode-white);
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: var(--dark-mode-light) !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  /*change color of underline*/
+  background-color: var(--dark-mode-white) !important;
+}
+
+::ng-deep .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: var(--dark-mode-white) !important;
+}
+
+/* Button */
+::ng-deep .mat-raised-button {
+  color: var(--dark-mode-white);
+  background-color: var(--dark-mode-button);
+}
+
+::ng-deep .mat-raised-button.mat-button-disabled.mat-button-disabled {
+  color: var(--dark-mode-grey);
+  background-color: var(--dark-mode-button-disabled);
+}
+
+
+::ng-deep .mat-icon-button {
+  color: var(--dark-mode-grey);
+}

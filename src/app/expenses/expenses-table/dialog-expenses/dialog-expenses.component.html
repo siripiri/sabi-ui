@@ -1,0 +1,48 @@
+<mat-toolbar>
+    <h2 *ngIf="data.update!=true; else elseBlock" mat-dialog-title>New Expenses Form</h2>
+    <ng-template #elseBlock>
+        <h2 mat-dialog-title>Edit Expenses Form</h2>
+    </ng-template>
+</mat-toolbar>
+
+<mat-progress-bar mode="indeterminate" *ngIf="progressBar"></mat-progress-bar>
+<br>
+
+<form class="container" [formGroup]="expenseForm">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="expenseForm.get('name')?.invalid && expenseForm.get('name')?.touched">*This field is
+            required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="amount">
+        <mat-error *ngIf="expenseForm.get('amount')?.invalid && expenseForm.get('amount')?.touched">*This field is
+            required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Notes</mat-label>
+        <input matInput formControlName="notes">
+        <mat-error *ngIf="expenseForm.get('notes')?.invalid && expenseForm.get('notes')?.touched">*This field is
+            required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-form-field">
+        <mat-label>Expenses Category</mat-label>
+        <mat-select formControlName="expensesCategory">
+            <ng-container *ngFor="let expensesCategory of expensesCategories">
+                <mat-option [value]="expensesCategory.expenseCategory">{{expensesCategory.expenseCategory}}</mat-option>
+            </ng-container>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="submitForm()"
+    [disabled]="expenseForm.invalid || loading || (this.data.update ? !this.expenseForm.dirty : false)"
+    style="position: relative;left: 80px;">Submit</button>
+  <button mat-raised-button [mat-dialog-close]="false" style="position: relative;left: 110px;">Close</button>
+</form>

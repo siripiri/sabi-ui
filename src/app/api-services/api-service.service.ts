@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Driver, DriverForm } from '../driver/driver.model';
+import { Expenses, ExpensesCategory, FuelExpenses } from '../expenses/expenses.model';
 import { Location, LocationApi } from '../location/location.model';
 import { Lorry } from '../lorry/lorry.model';
 
@@ -28,6 +29,10 @@ export class ApiServiceService {
   private GetDriverWithLorry = "http://localhost:8080/api/v1/driver/lorry";
   private PutDriver = "http://localhost:8080/api/v1/driver";
   private GetDriverById = "http://localhost:8080/api/v1/driver";
+
+  private GetExpenses = "http://localhost:8080/api/v1/expenses";
+  private GetExpensesCategory = "http://localhost:8080/api/v1/expensesCategory";
+  private GetFuelExpenses = "http://localhost:8080/api/v1/fuel";
 
   getLocationData(): Observable<Location[]> {
     return this.__http.get<Location[]>(this.GetLocationsUrl);
@@ -78,6 +83,38 @@ export class ApiServiceService {
   }
 
   getDriverById(id:number): Observable<DriverForm> {
-    return this.__http.get<DriverForm>(this.GetDriverById + '/' + id)
+    return this.__http.get<DriverForm>(this.GetDriverById + '/' + id);
+  }
+
+  getAllExpenses(): Observable<Expenses[]> {
+    return this.__http.get<Expenses[]>(this.GetExpenses);
+  }
+
+  getAllExpensesCategory(): Observable<ExpensesCategory[]> {
+    return this.__http.get<ExpensesCategory[]>(this.GetExpensesCategory);
+  }
+
+  putExpenses(expenses:Expenses): Observable<Expenses> {
+    return this.__http.put<Expenses>(this.GetExpenses, expenses);
+  }
+
+  patchExpenses(expenses:Expenses): Observable<Expenses> {
+    return this.__http.patch<Expenses>(this.GetExpenses, expenses);
+  }
+
+  getAllFuelExpenses(): Observable<FuelExpenses[]> {
+    return this.__http.get<FuelExpenses[]>(this.GetFuelExpenses);
+  }
+
+  getExpenseById(id: number): Observable<Expenses> {
+    return this.__http.get<Expenses>(this.GetExpenses + '/' + id);
+  }
+
+  putFuelExpenses(fuel: FuelExpenses): Observable<FuelExpenses> {
+    return this.__http.put<FuelExpenses>(this.GetFuelExpenses, fuel);
+  }
+
+  patchFuelExpenses(fuel: FuelExpenses): Observable<FuelExpenses> {
+    return this.__http.patch<FuelExpenses>(this.GetFuelExpenses, fuel);
   }
 }
