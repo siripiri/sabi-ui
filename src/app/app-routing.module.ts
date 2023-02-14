@@ -4,8 +4,10 @@ import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.co
 import { DriverDetailsComponent } from './driver/driver-details/driver-details.component';
 import { DriverComponent } from './driver/driver.component';
 import { ExpensesComponent } from './expenses/expenses.component';
+import { LoadsComponent } from './loads/loads.component';
 import { LocationComponent } from './location/location.component';
 import { LorryComponent } from './lorry/lorry.component';
+import { TripsComponent } from './trips/trips.component';
 
 const routes: Routes = [
   {
@@ -29,8 +31,16 @@ const routes: Routes = [
         component: DriverDetailsComponent
       },
       {
+        path: 'loads',
+        component: LoadsComponent
+      },
+      {
         path: 'expenses',
         component: ExpensesComponent
+      },
+      {
+        path: 'trip',
+        component: TripsComponent
       }
     ]
   }

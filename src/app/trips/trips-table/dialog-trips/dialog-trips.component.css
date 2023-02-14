@@ -1,0 +1,82 @@
+.example-form-field {
+  margin-right: 20px;
+}
+
+.two-form mat-form-field {
+  width: 50%;
+}
+
+mat-label {
+  color: var(--dark-mode-grey);
+}
+
+
+::ng-deep .mat-dialog-container {
+  background-color: var(--dark-mode-black-light);
+}
+
+/* toolbar */
+.mat-toolbar {
+  background-color: var(--dark-mode-toolbar-header);
+  color: var(--dark-mode-white);
+}
+
+/* Form fields */
+::ng-deep .mat-icon-button {
+  color: var(--dark-mode-grey);
+}
+
+.mat-form-field {
+  color: var(--dark-mode-white);
+}
+
+::ng-deep .mat-stepper-vertical-line::before {
+  border-left-color: var(--dark-mode-grey);
+}
+
+::ng-deep .mat-step input {
+  color: var(--dark-mode-white);
+}
+
+::ng-deep .mat-step .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: var(--dark-mode-light) !important;
+}
+
+::ng-deep .mat-step .mat-form-field-underline {
+  /*change color of underline*/
+  background-color: var(--dark-mode-white) !important;
+}
+
+::ng-deep .mat-step .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: var(--dark-mode-white) !important;
+}
+
+/* Button */
+::ng-deep .mat-raised-button {
+  color: var(--dark-mode-white);
+  background-color: var(--dark-mode-button);
+}
+
+::ng-deep .mat-raised-button.mat-button-disabled.mat-button-disabled {
+  color: var(--dark-mode-grey);
+  background-color: var(--dark-mode-button-disabled);
+}
+
+::ng-deep .mat-step {
+  color: var(--dark-mode-white);
+  background-color: var(--dark-mode-black-light);
+}
+
+::ng-deep .mat-step-text-label {
+  color: var(--dark-mode-white);
+}
+
+::ng-deep .mat-select-panel {
+  background-color: var(--dark-mode-black-dark);
+}
+
+::ng-deep .mat-option-text {
+  color: var(--dark-mode-white);
+}

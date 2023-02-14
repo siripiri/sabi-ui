@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Driver, DriverForm } from '../driver/driver.model';
 import { Expenses, ExpensesCategory, FuelExpenses } from '../expenses/expenses.model';
+import { cylinder } from '../loads/loads-model';
 import { Location, LocationApi } from '../location/location.model';
 import { Lorry } from '../lorry/lorry.model';
+import { trips, tripsTable } from '../trips/trips.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +35,13 @@ export class ApiServiceService {
   private GetExpenses = "http://localhost:8080/api/v1/expenses";
   private GetExpensesCategory = "http://localhost:8080/api/v1/expensesCategory";
   private GetFuelExpenses = "http://localhost:8080/api/v1/fuel";
+
+  private GetCylinderDetails = "http://localhost:8080/api/v1/cylinder";
+
+  private GetTripsForTable= "http://localhost:8080/api/v1/trips/tripsTable";
+  private GetTripLocation = "http://localhost:8080/api/v1/location/tripTable";
+  private GetTripLorry = "http://localhost:8080/api/v1/lorry/numberPlate";
+  private PutTrip = "http://localhost:8080/api/v1/trips";
 
   getLocationData(): Observable<Location[]> {
     return this.__http.get<Location[]>(this.GetLocationsUrl);
@@ -116,5 +125,25 @@ export class ApiServiceService {
 
   patchFuelExpenses(fuel: FuelExpenses): Observable<FuelExpenses> {
     return this.__http.patch<FuelExpenses>(this.GetFuelExpenses, fuel);
+  }
+
+  getAllCylinder(): Observable<cylinder[]> {
+    return this.__http.get<cylinder[]>(this.GetCylinderDetails);
+  }
+
+  getAllTripsTable(): Observable<tripsTable[]> {
+    return this.__http.get<tripsTable[]>(this.GetTripsForTable);
+  }
+
+  getAllLocationForTrip(): Observable<Location[]> {
+    return this.__http.get<Location[]>(this.GetTripLocation);
+  }
+
+  getAllLorryForTrip(): Observable<Lorry[]> {
+    return this.__http.get<Lorry[]>(this.GetTripLorry);
+  }
+
+  putTripDetail(trip: trips): Observable<trips> {
+    return this.__http.put<trips>(this.PutTrip, trip);
   }
 }

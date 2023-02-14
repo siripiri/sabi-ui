@@ -1,12 +1,12 @@
 <mat-card class="mat-elevation-z8 table-card">
 
-    <h2>Location</h2>
+    <h2>Trips Details</h2>
     <div class="subHeader">
-        <p>{{sizeOfLocation}} Registered Locations</p>
+        <p>{{sizeOfTrips}} Registered Trips</p>
     </div>
 
     <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" style="margin: 15px;"
-        (click)="createLocation()">
+        (click)="createTrip()">
         <mat-icon>add</mat-icon>
     </button>
 
@@ -24,14 +24,14 @@
                 <td mat-cell *matCellDef="let row"> {{row.id}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let row"> {{row.date}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="distributorName">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Distributor Name </th>
                 <td mat-cell *matCellDef="let row"> {{row.distributorName}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="address">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
-                <td mat-cell *matCellDef="let row"> {{row.address}} </td>
             </ng-container>
 
             <ng-container matColumnDef="city">
@@ -39,14 +39,32 @@
                 <td mat-cell *matCellDef="let row"> {{row.city}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="state">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
-                <td mat-cell *matCellDef="let row"> {{row.state}} </td>
-            </ng-container>
-
             <ng-container matColumnDef="kmAllocated">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Km Allocated </th>
                 <td mat-cell *matCellDef="let row"> {{row.kmAllocated}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="kmCovered">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Km Covered </th>
+                <td mat-cell *matCellDef="let row">
+                    <span *ngIf="row.kmAllocated < row.kmCovered; else elseBlock" class="badge rounded-pill text-bg-danger">{{row.kmCovered}}</span>
+                    <ng-template #elseBlock> <span class="badge rounded-pill text-bg-success">{{row.kmCovered}}</span></ng-template>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="timeTaken">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Time Taken </th>
+                <td mat-cell *matCellDef="let row"> {{row.timeTaken}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="driverName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Driver Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.driverName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lorryNumberPlate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Lorry Number Plate </th>
+                <td mat-cell *matCellDef="let row"> {{row.lorryNumberPlate}} </td>
             </ng-container>
 
             <ng-container matColumnDef="action">
@@ -56,28 +74,26 @@
                         <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)="updateLocation(row)">
+                        <button mat-menu-item (click)="updateTrip(row)">
                             <mat-icon>edit</mat-icon>
-                            <span>edit location</span>
+                            <span>edit Trip</span>
                         </button>
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="deleteTrip()">
                             <mat-icon>delete</mat-icon>
-                            <span>delete location</span>
+                            <span>delete Trip</span>
                         </button>
                     </mat-menu>
                 </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="10">No data matching the filter "{{input.value}}"</td>
             </tr>
-
         </table>
-
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users">
         </mat-paginator>
     </div>

@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { breadcrumb } from '../common/common.model';
 
 @Component({
-  selector: 'app-trips',
-  templateUrl: './trips.component.html',
-  styleUrls: ['./trips.component.css']
+  selector: 'app-loads',
+  templateUrl: './loads.component.html',
+  styleUrls: ['./loads.component.css']
 })
-export class TripsComponent implements OnInit {
+export class LoadsComponent implements OnInit {
 
-  links: breadcrumb[] = [
+  links:breadcrumb[] = [
     {
       link: '/',
       name: 'Dashboard',
       active: true
     },
     {
-      link: '/trip',
-      name: 'Trips Details',
+      link: '/loads',
+      name: 'Loads Details',
       active: false
     }
   ];

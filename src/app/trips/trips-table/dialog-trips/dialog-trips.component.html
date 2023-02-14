@@ -1,0 +1,103 @@
+<mat-toolbar color="primary">
+    <h2 mat-dialog-title>New Trip Form</h2>
+</mat-toolbar>
+<mat-progress-bar mode="indeterminate" *ngIf="progressBar"></mat-progress-bar>
+<br>
+<form class="container" [formGroup]="tripForm">
+    <mat-vertical-stepper linear>
+        <mat-step>
+            <ng-template matStepLabel>Distance Details</ng-template>
+            <mat-form-field class="example-form-field">
+                <mat-label>Plant To Distributor</mat-label>
+                <input matInput type="number" formControlName="plantToDistributor">
+                <mat-error
+                    *ngIf="tripForm.get('plantToDistributor')?.invalid && tripForm.get('plantToDistributor')?.touched">*This
+                    field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>Distributor To Plant</mat-label>
+                <input matInput type="number" formControlName="distributorToPlant">
+                <mat-error
+                    *ngIf="tripForm.get('distributorToPlant')?.invalid && tripForm.get('distributorToPlant')?.touched">*This
+                    field is required</mat-error>
+            </mat-form-field>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Time Details</ng-template>
+            <div>
+                <mat-form-field>
+                    <mat-label>Date</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Plant Start</mat-label>
+                    <input matInput formControlName="plantStart">
+                    <mat-error *ngIf="tripForm.get('plantStart')?.invalid && tripForm.get('plantStart')?.touched">*This
+                        field should be (hh:mm am|pm) format eg: (12:00 am)</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Distributor End</mat-label>
+                    <input matInput formControlName="desEnd">
+                    <mat-error
+                        *ngIf="tripForm.get('desEnd')?.invalid && tripForm.get('desEnd')?.touched">*This
+                        field should be (hh:mm am|pm) format eg: (12:00 am)</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Distributor Start</mat-label>
+                    <input matInput formControlName="desStart">
+                    <mat-error
+                        *ngIf="tripForm.get('desStart')?.invalid && tripForm.get('desStart')?.touched">*This
+                        field should be (hh:mm am|pm) format eg: (12:00 am)</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Plant End</mat-label>
+                    <input matInput formControlName="plantEnd">
+                    <mat-error *ngIf="tripForm.get('plantEnd')?.invalid && tripForm.get('plantEnd')?.touched">*This
+                        field should be (hh:mm am|pm) format eg: (12:00 am)</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Location Details</ng-template>
+            <mat-form-field style="width: 90%;">
+                <mat-label>Distributor Name</mat-label>
+                <mat-select formControlName="location" (closed)="onPanelLocationClose()">
+                    <mat-form-field style="width: 90%; left: 8px;">
+                        <input matInput [formControl]="filterLocationControl">
+                    </mat-form-field>
+                    <mat-option *ngFor="let option of filteredLocation | async"
+                        [value]="option">{{option.distributorName}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Lorry Details</ng-template>
+            <mat-form-field style="width: 90%;">
+                <mat-label>Number Plate</mat-label>
+                <mat-select formControlName="lorry" (closed)="onPanelLorryClose()">
+                    <mat-form-field style="width: 90%; left: 9px;">
+                        <input matInput [formControl]="filterLorryControl">
+                    </mat-form-field>
+                    <mat-option *ngFor="let option of filteredLorry | async"
+                        [value]="option">{{option.numberPlate}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <p *ngIf="tripForm.invalid">The form is invalid. Please edit the form.</p>
+            <div>
+                <button mat-raised-button
+                    [disabled]="tripForm.invalid || loading" type="button" (click)="submit()" color="primary">Submit Data</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</form>
+<mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="false" style="position: relative; left: 570px;">Close</button>
+</mat-dialog-actions>

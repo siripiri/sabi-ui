@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +56,10 @@ import { ExpensesTableComponent } from './expenses/expenses-table/expenses-table
 import { DialogExpensesComponent } from './expenses/expenses-table/dialog-expenses/dialog-expenses.component';
 import { FuelExpensesTableComponent } from './expenses/fuel-expenses-table/fuel-expenses-table.component';
 import { DialogFuelExpensesComponent } from './expenses/fuel-expenses-table/dialog-fuel-expenses/dialog-fuel-expenses.component';
+import { LoadsComponent } from './loads/loads.component';
+import { CylinderTableComponent } from './loads/cylinder-table/cylinder-table.component';
+import { TripsTableComponent } from './trips/trips-table/trips-table.component';
+import { DialogTripsComponent } from './trips/trips-table/dialog-trips/dialog-trips.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +90,11 @@ import { DialogFuelExpensesComponent } from './expenses/fuel-expenses-table/dial
     ExpensesTableComponent,
     DialogExpensesComponent,
     FuelExpensesTableComponent,
-    DialogFuelExpensesComponent
+    DialogFuelExpensesComponent,
+    LoadsComponent,
+    CylinderTableComponent,
+    TripsTableComponent,
+    DialogTripsComponent
   ],
   imports: [
     BrowserModule,
@@ -113,7 +122,8 @@ import { DialogFuelExpensesComponent } from './expenses/fuel-expenses-table/dial
     MatSelectModule,
     MatStepperModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,7 +21,8 @@ export class DashboardLayoutComponent implements OnInit {
     },
     {
       title: 'Trips',
-      icon: 'commute'
+      icon: 'commute',
+      link: '/trip'
     },
     {
       title: 'Lorry',
@@ -37,6 +38,11 @@ export class DashboardLayoutComponent implements OnInit {
       title: 'Location',
       icon: 'location_on',
       link: '/location'
+    },
+    {
+      title: 'loads',
+      icon: 'view_list',
+      link: '/loads'
     },
     {
       title: 'Expenses',
