@@ -101,3 +101,11 @@ table {
 ::ng-deep .mat-select-value-text {
   color: var(--dark-mode-white) !important;
 }
+
+/* Warning Badge */
+.text-bg-warning{
+  background-color: #ffc107;
+  color: white;
+  font-weight: 600;
+  font-size: small;
+}

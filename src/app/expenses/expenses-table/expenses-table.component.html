@@ -49,6 +49,22 @@
                 <td mat-cell *matCellDef="let row"> {{row.expensesCategory}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="lorry">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Number Plate </th>
+              <td mat-cell *matCellDef="let row">
+                <span *ngIf="row.lorry == null; else elseBlock1" class="badge rounded-pill text-bg-warning">Not Assigned</span>
+                <ng-template #elseBlock1>{{row.lorry.numberPlate}}</ng-template>
+              </td>
+            </ng-container>
+
+          <ng-container matColumnDef="driver">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Driver Name </th>
+            <td mat-cell *matCellDef="let row">
+              <span *ngIf="row.driver == null; else elseBlock" class="badge rounded-pill text-bg-warning">Not Assigned</span>
+              <ng-template #elseBlock>{{row.driver.driverName}}</ng-template>
+            </td>
+          </ng-container>
+
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let row">

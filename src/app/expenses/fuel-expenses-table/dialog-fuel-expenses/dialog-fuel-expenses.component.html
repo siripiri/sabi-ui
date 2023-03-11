@@ -45,6 +45,16 @@
         <mat-error *ngIf="expenseForm.get('paymentMode')?.invalid && expenseForm.get('paymentMode')?.touched">*This field is
             required</mat-error>
     </mat-form-field>
+    <mat-form-field *ngIf="!data.update">
+      <mat-label>Number Plate</mat-label>
+      <mat-select formControlName="lorry" (closed)="onPanelLorryClose()">
+        <mat-form-field style="width: 90%; left: 9px;">
+          <input matInput [formControl]="filterLorryControl">
+        </mat-form-field>
+        <mat-option *ngFor="let option of filteredLorry | async"
+            [value]="option">{{option.numberPlate}}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <button mat-raised-button (click)="submitForm()"
     [disabled]="expenseForm.invalid || loading || (this.data.update ? !this.expenseForm.dirty : false)"
     style="position: relative;left: 80px;">Submit</button>

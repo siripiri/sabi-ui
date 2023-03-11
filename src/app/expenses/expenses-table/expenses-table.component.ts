@@ -15,7 +15,7 @@ import { DialogExpensesComponent } from './dialog-expenses/dialog-expenses.compo
 })
 export class ExpensesTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'amount', 'date', 'notes', 'expensesCategory', 'action'];
+  displayedColumns: string[] = ['id', 'name', 'amount', 'date', 'notes', 'expensesCategory', 'lorry', 'driver', 'action'];
   dataSource!: MatTableDataSource<Expenses>;
   sizeOfExpenses: number = 0;
 
@@ -53,7 +53,7 @@ export class ExpensesTableComponent implements OnInit {
   createExpense() {
     let dialogRef = this.__dialog.open(
       DialogExpensesComponent, {
-        height: '500px',
+        height: '610px',
         width: '400px',
         data: { update: false }
       }

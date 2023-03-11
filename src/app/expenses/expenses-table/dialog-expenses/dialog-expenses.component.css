@@ -51,3 +51,15 @@ input::placeholder {
   color: var(--dark-mode-grey);
   background-color: var(--dark-mode-button-disabled);
 }
+
+::ng-deep .mat-select-panel {
+  background-color: var(--dark-mode-black-dark);
+}
+
+::ng-deep .mat-option-text {
+  color: var(--dark-mode-white);
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+  color: whitesmoke;
+}

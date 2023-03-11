@@ -15,7 +15,7 @@ import { DialogFuelExpensesComponent } from './dialog-fuel-expenses/dialog-fuel-
 })
 export class FuelExpensesTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'amount', 'date', 'notes', 'currentPrice', 'literFilled', 'paymentMode', 'action'];
+  displayedColumns: string[] = ['id', 'name', 'amount', 'date', 'notes', 'currentPrice', 'literFilled', 'paymentMode', 'lorry', 'action'];
   dataSource!: MatTableDataSource<FuelExpensesTable>;
   sizeOfFuelExpenses: number = 0;
 
@@ -74,7 +74,7 @@ export class FuelExpensesTableComponent implements OnInit {
   updateFuelExpenses(fuelExpenses: FuelExpenses) {
     let dialogRef = this.__dialog.open(
       DialogFuelExpensesComponent, {
-        height: '610px',
+        height: '550px',
         width: '400px',
         data: { update: true, fuelExpenses: fuelExpenses }
       }

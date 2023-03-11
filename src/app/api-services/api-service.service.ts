@@ -17,7 +17,9 @@ export class ApiServiceService {
     private __http:HttpClient
   ) { }
 
-  private GetLocationsUrl = "http://localhost:8080/api/v1/location";
+  private apiHost = "http://localhost:8080";
+
+  private GetLocationsUrl = `${this.apiHost}/api/v1/location`;
   private PostLocationUrl = "http://localhost:8080/api/v1/location";
   private patchLocationUrl = "http://localhost:8080/api/v1/location";
 
@@ -42,6 +44,8 @@ export class ApiServiceService {
   private GetTripLocation = "http://localhost:8080/api/v1/location/tripTable";
   private GetTripLorry = "http://localhost:8080/api/v1/lorry/numberPlate";
   private PutTrip = "http://localhost:8080/api/v1/trips";
+
+  private GetDriverIdName = `${this.apiHost}/api/v1/driver/idAndName`;
 
   getLocationData(): Observable<Location[]> {
     return this.__http.get<Location[]>(this.GetLocationsUrl);
@@ -145,5 +149,9 @@ export class ApiServiceService {
 
   putTripDetail(trip: trips): Observable<trips> {
     return this.__http.put<trips>(this.PutTrip, trip);
+  }
+
+  getAllDriverIdName(): Observable<Driver[]> {
+    return this.__http.get<Driver[]>(this.GetDriverIdName);
   }
 }

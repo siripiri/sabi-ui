@@ -24,7 +24,7 @@
     <mat-form-field>
         <mat-label>Date</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker-toggle  matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
@@ -40,6 +40,26 @@
                 <mat-option [value]="expensesCategory.expenseCategory">{{expensesCategory.expenseCategory}}</mat-option>
             </ng-container>
         </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="!data.update">
+      <mat-label>Number Plate</mat-label>
+      <mat-select formControlName="lorry" (closed)="onPanelLorryClose()">
+        <mat-form-field style="width: 90%; left: 9px;">
+          <input matInput [formControl]="filterLorryControl">
+        </mat-form-field>
+        <mat-option *ngFor="let option of filteredLorry | async"
+            [value]="option">{{option.numberPlate}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="!data.update">
+      <mat-label>Driver Name</mat-label>
+      <mat-select formControlName="driver" (closed)="onPanelDriverClose()">
+        <mat-form-field style="width: 90%; left: 9px;">
+          <input matInput [formControl]="filterDriverControl">
+        </mat-form-field>
+        <mat-option *ngFor="let option of filteredDriver | async"
+            [value]="option">{{option.driverName}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <button mat-raised-button (click)="submitForm()"
     [disabled]="expenseForm.invalid || loading || (this.data.update ? !this.expenseForm.dirty : false)"

@@ -5,6 +5,8 @@ export interface Expenses {
     date: string;
     notes: string;
     expensesCategory: string;
+    lorry: lorry;
+    driver: driver | null;
 }
 
 export interface ExpensesCategory {
@@ -37,9 +39,20 @@ export interface FuelExpensesTable {
     paymentMode: string;
     expensesCategory: string;
     expensesId: number;
+    lorry: lorry;
 }
 
 export interface DialogFuelExpenses {
     update: boolean;
     fuelExpenses?: FuelExpensesTable;
+}
+
+export interface lorry {
+  id: number;
+  numberPlate: string;
+}
+
+export interface driver {
+  id: number;
+  driverName: string;
 }

@@ -56,3 +56,15 @@ input::placeholder {
 ::ng-deep .mat-icon-button {
   color: var(--dark-mode-grey);
 }
+
+::ng-deep .mat-select-panel {
+  background-color: var(--dark-mode-black-dark);
+}
+
+::ng-deep .mat-option-text {
+  color: var(--dark-mode-white);
+}
+
+::ng-deep .mat-datepicker-toggle-default-icon {
+  color: whitesmoke;
+}

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ApiServiceService } from '../api-services/api-service.service';
+import { Driver } from '../driver/driver.model';
+import { Lorry } from '../lorry/lorry.model';
 import { Expenses, ExpensesCategory, FuelExpenses, FuelExpensesTable } from './expenses.model';
 
 @Injectable({
@@ -28,7 +30,7 @@ export class ExpensesService {
     expenses.id = id;
     return this.apiServices.patchExpenses(expenses);
   }
-  
+
   getAllFuelExpenses(): Observable<FuelExpensesTable[]> {
     return this.apiServices.getAllFuelExpenses()
       .pipe(
@@ -57,7 +59,8 @@ export class ExpensesService {
       literFilled: fuelExpenses.literFilled,
       paymentMode: fuelExpenses.paymentMode,
       expensesCategory: fuelExpenses.expenses.expensesCategory,
-      expensesId: fuelExpenses.expenses.id
+      expensesId: fuelExpenses.expenses.id,
+      lorry: fuelExpenses.expenses.lorry
     }
   }
 
@@ -67,5 +70,13 @@ export class ExpensesService {
 
   patchFuelExpenses(fuel: FuelExpenses): Observable<FuelExpenses> {
     return this.apiServices.patchFuelExpenses(fuel);
+  }
+
+  getAllDriverIdAndName(): Observable<Driver[]> {
+    return this.apiServices.getAllDriverIdName();
+  }
+
+  getAllLorryIdAndNumberPlate(): Observable<Lorry[]> {
+    return this.apiServices.getAllLorryForTrip();
   }
 }
