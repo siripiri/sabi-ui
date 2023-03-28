@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -60,6 +60,12 @@ import { LoadsComponent } from './loads/loads.component';
 import { CylinderTableComponent } from './loads/cylinder-table/cylinder-table.component';
 import { TripsTableComponent } from './trips/trips-table/trips-table.component';
 import { DialogTripsComponent } from './trips/trips-table/dialog-trips/dialog-trips.component';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { AuthGuardGuard } from './auth/auth-guard.guard';
+import { ApiServiceService } from './api-services/api-service.service';
+import { TokenInterceptorService } from './auth/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -94,7 +100,10 @@ import { DialogTripsComponent } from './trips/trips-table/dialog-trips/dialog-tr
     LoadsComponent,
     CylinderTableComponent,
     TripsTableComponent,
-    DialogTripsComponent
+    DialogTripsComponent,
+    SignInComponent,
+    SignUpComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -125,7 +134,11 @@ import { DialogTripsComponent } from './trips/trips-table/dialog-trips/dialog-tr
     MatNativeDateModule,
     MatAutocompleteModule
   ],
-  providers: [],
+  providers: [AuthGuardGuard, ApiServiceService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,15 @@
+<h1>SignIn Page</h1>
+<form [formGroup]="loginForm">
+  <p *ngIf="serverMessage != ''">{{serverMessage}}</p>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
+    <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" >*This field is required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password">
+    <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" >*This field is required</mat-error>
+  </mat-form-field>
+  <button mat-raised-button [disabled]="loginForm.invalid" (click)="submit()">Submit</button>
+</form>

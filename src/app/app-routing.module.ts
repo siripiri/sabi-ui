@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardGuard } from './auth/auth-guard.guard';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { DriverDetailsComponent } from './driver/driver-details/driver-details.component';
 import { DriverComponent } from './driver/driver.component';
@@ -11,38 +15,62 @@ import { TripsComponent } from './trips/trips.component';
 
 const routes: Routes = [
   {
+    path:'',
+    redirectTo: 'signUp',
+    pathMatch:'full'
+  },
+  {
+    path: 'signIn',
+    component: SignInComponent
+  },
+  {
+    path: 'signUp',
+    component: SignUpComponent
+  },
+  {
     path: '',
     component: DashboardLayoutComponent,
     children: [
       {
         path: 'location',
-        component: LocationComponent
+        component: LocationComponent,
+        canActivate: [AuthGuardGuard]
       },
       {
         path: 'lorry',
-        component: LorryComponent
+        component: LorryComponent,
+        canActivate: [AuthGuardGuard]
       },
       {
         path: 'driver',
-        component: DriverComponent
+        component: DriverComponent,
+        canActivate: [AuthGuardGuard]
       },
       {
         path: 'driver/:id',
-        component: DriverDetailsComponent
+        component: DriverDetailsComponent,
+        canActivate: [AuthGuardGuard]
       },
       {
         path: 'loads',
-        component: LoadsComponent
+        component: LoadsComponent,
+        canActivate: [AuthGuardGuard]
       },
       {
         path: 'expenses',
-        component: ExpensesComponent
+        component: ExpensesComponent,
+        canActivate: [AuthGuardGuard]
       },
       {
         path: 'trip',
-        component: TripsComponent
+        component: TripsComponent,
+        canActivate: [AuthGuardGuard]
       }
     ]
+  },
+  {
+    path:'**',
+    component: PageNotFoundComponent
   }
 ];
 

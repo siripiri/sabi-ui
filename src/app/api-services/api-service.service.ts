@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthToken, RegisterUser, User } from '../auth/auth.model';
 import { Driver, DriverForm } from '../driver/driver.model';
 import { Expenses, ExpensesCategory, FuelExpenses } from '../expenses/expenses.model';
 import { cylinder } from '../loads/loads-model';
@@ -18,6 +19,9 @@ export class ApiServiceService {
   ) { }
 
   private apiHost = "http://localhost:8080";
+
+  private RegisterUrl = `${this.apiHost}/api/v1/auth/register`;
+  private AuthenticateUrl = `${this.apiHost}/api/v1/auth/authenticate`;
 
   private GetLocationsUrl = `${this.apiHost}/api/v1/location`;
   private PostLocationUrl = "http://localhost:8080/api/v1/location";
@@ -46,6 +50,14 @@ export class ApiServiceService {
   private PutTrip = "http://localhost:8080/api/v1/trips";
 
   private GetDriverIdName = `${this.apiHost}/api/v1/driver/idAndName`;
+
+  signUp(user: RegisterUser): Observable<AuthToken> {
+    return this.__http.post<AuthToken>(this.RegisterUrl, user);
+  }
+
+  signIn(user: User): Observable<AuthToken> {
+    return this.__http.post<AuthToken>(this.AuthenticateUrl, user);
+  }
 
   getLocationData(): Observable<Location[]> {
     return this.__http.get<Location[]>(this.GetLocationsUrl);
