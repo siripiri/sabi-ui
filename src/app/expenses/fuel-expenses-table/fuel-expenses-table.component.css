@@ -77,6 +77,7 @@ table {
 .mat-cell {
   color: var(--dark-mode-grey);
   border-color: var(--dark-mode-grey);
+  background-color: #1a1a22;
 }
 
 /* Action Button */

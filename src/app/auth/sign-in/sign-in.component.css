@@ -1,0 +1,55 @@
+.content {
+  margin-left: 10px;
+  padding-top: 20px;
+}
+
+.header h1 {
+  font-size: 40px;
+  font-weight: 500;
+  color: #4A4A4A;
+}
+
+.header p {
+  font-weight: 200;
+}
+
+.card1 {
+  width: 50%;
+  margin-left: auto;
+  min-height: 300px;
+}
+
+.card2 {
+  background-color: #34495E;
+  width: 50%;
+  margin-right: auto;
+  min-height: 300px; /*268*/
+}
+
+.mat-form-field {
+  padding-left: 20px;
+  width: 70%;
+}
+
+.header2 {
+  padding-top: 45px;
+}
+
+.header2 h1 {
+  font-size: 30px;
+  font-weight: 500;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.header2 p {
+  font-size: 15px;
+  color: whitesmoke;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.registerButton {
+  display: block;
+  margin: 0 auto;
+}

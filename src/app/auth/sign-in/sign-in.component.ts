@@ -25,6 +25,9 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(this.authService.getToken() != null) {
+      this.__router.navigate(['/location'])
+    }
   }
 
   submit() {
@@ -46,6 +49,10 @@ export class SignInComponent implements OnInit {
           }
         }
       })
+  }
+
+  register() {
+    this.__router.navigate(['/signUp']);
   }
 
   openSnackBar(message: string, action: string | undefined) {

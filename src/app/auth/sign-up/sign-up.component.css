@@ -1,0 +1,29 @@
+.card1{
+  text-align: center;
+  align-items: center;
+  width: 40%;
+  display: block;
+  margin: 0 auto;
+}
+
+.containerr{
+  margin-top: 200px;
+}
+
+.header {
+  padding-top: 30px;
+}
+
+.header h1 {
+  font-size: 40px;
+  font-weight: 500;
+  color: #4A4A4A;
+}
+
+.header p {
+  font-weight: 200;
+}
+
+.mat-form-field{
+  width: 70%;
+}

@@ -16,7 +16,7 @@ import { TripsComponent } from './trips/trips.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo: 'signUp',
+    redirectTo: 'signIn',
     pathMatch:'full'
   },
   {
